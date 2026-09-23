@@ -1,0 +1,200 @@
+﻿THIEF 2014
+DIAGNOSTICO ESTRUTURAL DO XML WWISER
+====================================
+
+Arquivo analisado:
+
+B:\Thief2014_Dubbing\Analysis\BNK\th4_000_common_vo.bnk.xml
+
+Tamanho:
+
+5.92 MB
+
+
+============================================================
+ELEMENTOS XML ENCONTRADOS
+============================================================
+
+a
+base
+body
+div
+doc
+fld
+head
+html
+input
+label
+lst
+obj
+root
+script
+span
+style
+title
+xsl:apply
+xsl:choose
+xsl:if
+xsl:otherwise
+xsl:output
+xsl:strip
+xsl:stylesheet
+xsl:template
+xsl:text
+xsl:value
+xsl:when
+
+
+============================================================
+OBJETOS WWISE
+============================================================
+
+Object              Count
+------              -----
+CAkEvent                0
+CAkAction               0
+CAkSound                0
+CAkRanSeqCntr           0
+CAkSwitchCntr           0
+CAkActorMixer           0
+CAkLayerCntr            0
+CAkBus                  0
+CAkAuxBus               0
+CAkState                0
+CAkSwitch               0
+CAkDialogueEvent        0
+CAkDialogueArgument     0
+
+
+============================================================
+PADROES ENCONTRADOS
+============================================================
+
+Pattern  Count
+-------  -----
+wem          2
+WEM          2
+mediaID      0
+MediaID      0
+sourceID  1152
+SourceID  1152
+audioID      0
+AudioID      0
+pluginID  1152
+PluginID  1152
+objectID     0
+ObjectID     0
+shortID      0
+ShortID      0
+id=          3
+
+
+============================================================
+AMOSTRAS DO XML
+============================================================
+
+// test option to middle-click on a wem and open it, browser support is kinda wonky
+return '.wem';
+<obj na="CAkSound" ix="9">
+<fld ty="tid" na="sourceID" va="1011213518"/>
+<obj na="CAkSound" ix="10">
+<fld ty="tid" na="sourceID" va="884549210"/>
+<obj na="CAkActorMixer" ix="11">
+<obj na="CAkSound" ix="12">
+<fld ty="tid" na="sourceID" va="572354245"/>
+<obj na="CAkSound" ix="13">
+<fld ty="tid" na="sourceID" va="791924021"/>
+<obj na="CAkSound" ix="14">
+<fld ty="tid" na="sourceID" va="110570427"/>
+<obj na="CAkSound" ix="15">
+<fld ty="tid" na="sourceID" va="917369937"/>
+<obj na="CAkActorMixer" ix="16">
+<obj na="CAkSound" ix="17">
+<fld ty="tid" na="sourceID" va="85455385"/>
+<obj na="CAkSound" ix="18">
+<fld ty="tid" na="sourceID" va="1050544152"/>
+<obj na="CAkSound" ix="19">
+<fld ty="tid" na="sourceID" va="332168452"/>
+<obj na="CAkSound" ix="20">
+<fld ty="tid" na="sourceID" va="853338107"/>
+<obj na="CAkSound" ix="21">
+<fld ty="tid" na="sourceID" va="885837224"/>
+<obj na="CAkActorMixer" ix="22">
+<obj na="CAkSound" ix="23">
+<fld ty="tid" na="sourceID" va="219721614"/>
+<obj na="CAkSound" ix="24">
+<fld ty="tid" na="sourceID" va="367584962"/>
+<obj na="CAkSound" ix="25">
+<fld ty="tid" na="sourceID" va="65816721"/>
+<obj na="CAkSound" ix="26">
+<fld ty="tid" na="sourceID" va="581175625"/>
+<obj na="CAkSound" ix="27">
+<fld ty="tid" na="sourceID" va="296028953"/>
+<obj na="CAkSound" ix="28">
+<fld ty="tid" na="sourceID" va="111938917"/>
+<obj na="CAkSound" ix="29">
+<fld ty="tid" na="sourceID" va="278962303"/>
+<obj na="CAkSound" ix="30">
+<fld ty="tid" na="sourceID" va="359395123"/>
+<obj na="CAkSound" ix="31">
+<fld ty="tid" na="sourceID" va="258432156"/>
+<obj na="CAkSound" ix="32">
+<fld ty="tid" na="sourceID" va="507868355"/>
+<obj na="CAkSound" ix="33">
+<fld ty="tid" na="sourceID" va="187877902"/>
+<obj na="CAkSound" ix="34">
+<fld ty="tid" na="sourceID" va="631551399"/>
+<obj na="CAkSound" ix="35">
+<fld ty="tid" na="sourceID" va="452907922"/>
+<obj na="CAkSound" ix="36">
+<fld ty="tid" na="sourceID" va="622869614"/>
+<obj na="CAkSound" ix="37">
+<fld ty="tid" na="sourceID" va="941504960"/>
+<obj na="CAkSound" ix="38">
+<fld ty="tid" na="sourceID" va="396856693"/>
+<obj na="CAkActorMixer" ix="39">
+<obj na="CAkSound" ix="40">
+<fld ty="tid" na="sourceID" va="291892974"/>
+<obj na="CAkActorMixer" ix="41">
+<obj na="CAkSound" ix="42">
+<fld ty="tid" na="sourceID" va="170699724"/>
+<obj na="CAkActorMixer" ix="43">
+<obj na="CAkSound" ix="44">
+<fld ty="tid" na="sourceID" va="644391300"/>
+<obj na="CAkActorMixer" ix="45">
+<obj na="CAkSound" ix="46">
+<fld ty="tid" na="sourceID" va="227830401"/>
+<obj na="CAkActorMixer" ix="47">
+<obj na="CAkSound" ix="48">
+<fld ty="tid" na="sourceID" va="28397653"/>
+<obj na="CAkSound" ix="49">
+<fld ty="tid" na="sourceID" va="831866575"/>
+<obj na="CAkSound" ix="50">
+<fld ty="tid" na="sourceID" va="305371706"/>
+<obj na="CAkSound" ix="51">
+<fld ty="tid" na="sourceID" va="802166597"/>
+<obj na="CAkSound" ix="52">
+<fld ty="tid" na="sourceID" va="704692640"/>
+<obj na="CAkSound" ix="53">
+<fld ty="tid" na="sourceID" va="822386335"/>
+<obj na="CAkSound" ix="54">
+<fld ty="tid" na="sourceID" va="324025043"/>
+<obj na="CAkSound" ix="55">
+<fld ty="tid" na="sourceID" va="508384238"/>
+<obj na="CAkSound" ix="56">
+<fld ty="tid" na="sourceID" va="1004298845"/>
+<obj na="CAkSound" ix="57">
+<fld ty="tid" na="sourceID" va="434389044"/>
+<obj na="CAkActorMixer" ix="58">
+<obj na="CAkSound" ix="59">
+<fld ty="tid" na="sourceID" va="697193758"/>
+<obj na="CAkSound" ix="60">
+<fld ty="tid" na="sourceID" va="237528681"/>
+<obj na="CAkSound" ix="61">
+<fld ty="tid" na="sourceID" va="911543220"/>
+<obj na="CAkSound" ix="62">
+
+
+============================================================
+FIM DO DIAGNOSTICO
+============================================================
