@@ -1,0 +1,41 @@
+﻿VOICE REVIEW CATALOG - SCRIPT 15
+=================================
+
+Data: 2026-09-23 00:05:26
+
+Manifest:
+B:\DublagemThief2014\Analysis\WEM\voice_audition_manifest.csv
+
+Registros:
+1144
+
+Catalogo HTML:
+B:\Thief2014_Dubbing\Work\VoiceAudition\review.html
+
+Template:
+B:\DublagemThief2014\Analysis\WEM\voice_review_template.csv
+
+Objetivo:
+Catalogar e identificar as falas do pacote th4_000_common_vo.
+
+Campos de revisao:
+- Type
+- Character
+- Context
+- OriginalText
+- PTBRText
+- Notes
+- ReviewStatus
+
+Status inicial:
+PENDING
+
+Observacao:
+Os dados de revisao sao inicialmente armazenados no localStorage
+do navegador utilizado para abrir review.html.
+
+Use o botao "Exportar CSV" para gerar:
+voice_review_export.csv
+
+Esse CSV sera utilizado posteriormente para alimentar o AudioMap
+e o fluxo de producao da dublagem PT-BR.
