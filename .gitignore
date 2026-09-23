@@ -1,0 +1,50 @@
+﻿# THIEF 2014 - DUBLAGEM PT-BR
+
+# Arquivos originais do jogo
+Original/
+Game/
+Steam/
+
+# Wwise
+*.pck
+*.bnk
+*.wem
+
+# Audio bruto
+*.wav
+*.ogg
+*.mp3
+*.flac
+
+# Ferramentas pesadas
+Tools/QuickBMS/
+Tools/vgmstream/
+Tools/Wwiser/
+Tools/PythonEnv/
+
+# Laboratorio local
+Extracted/
+Work/
+
+# Saidas temporarias
+Output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# Temporarios
+*.tmp
+*.bak
+
+# Editores
+.vscode/
+.idea/
+
+# Sistema
+Thumbs.db
+.DS_Store

@@ -1,0 +1,59 @@
+﻿THIEF 2014
+ANALISE ESTRUTURAL DO BNK
+==========================
+
+Arquivo:
+B:\Thief2014_Dubbing\Analysis\BNK\th4_000_common_vo.bnk.xml
+
+Tamanho:
+5.92 MB
+
+OBJETOS WWISE
+=============
+
+CAkEvent:
+0
+
+CAkAction:
+0
+
+CAkSound:
+0
+
+CAkRanSeqCntr:
+0
+
+CAkSwitchCntr:
+0
+
+CAkActorMixer:
+0
+
+ARQUIVOS GERADOS
+================
+
+Events:
+B:\Thief2014_Dubbing\Analysis\BNK\Structure\events.csv
+
+Sounds:
+B:\Thief2014_Dubbing\Analysis\BNK\Structure\sounds.csv
+
+Actions:
+B:\Thief2014_Dubbing\Analysis\BNK\Structure\actions.csv
+
+PROXIMA ANALISE
+===============
+
+Precisamos determinar:
+
+1. Como os CAkSound referenciam os WEM.
+2. Quais Audio IDs aparecem nos objetos.
+3. Quais Events acionam esses Sounds.
+4. Se os Events podem ser associados a falas.
+5. Quais WEM pertencem aos diálogos.
+
+O objetivo final e montar um mapa:
+
+EVENT -> SOUND -> WEM
+
+para posteriormente substituir apenas os audios de voz.
