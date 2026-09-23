@@ -1,0 +1,12 @@
+﻿metadata for B:\Thief2014_Dubbing\Extracted\th4_000_common_vo\th4_000_common_vo\english(us)\857517261.wem
+sample rate: 32000 Hz
+channels: 1
+channel mask: 0x4 / FC
+stream total samples: 47487 (0:01.484 seconds)
+encoding: Custom Vorbis
+layout: flat
+metadata from: Audiokinetic Wwise RIFF header
+bitrate: 87 kbps
+sample type: float
+play duration: 47487 samples (0:01.484 seconds)
+
