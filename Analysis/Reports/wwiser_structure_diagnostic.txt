@@ -1,0 +1,381 @@
+============================================================
+ THIEF 2014 - WWISEER STRUCTURE DIAGNOSTIC
+============================================================
+
+Arquivo:
+B:\DublagemThief2014\Analysis\BNK\th4_000_common_vo.bnk.xml
+
+Tamanho:
+6203083 bytes
+
+Caracteres:
+6203083
+
+------------------------------------------------------------
+ELEMENTOS ENCONTRADOS
+------------------------------------------------------------
+a                                     2
+base                                  1
+body                                  1
+div                                  18
+doc                                   1
+fld                               73539
+head                                  1
+html                                  1
+input                                 2
+label                                 2
+lst                                8215
+obj                               27122
+root                                  1
+script                                1
+span                                 19
+style                                 1
+title                                 1
+xsl:apply-templates                   7
+xsl:choose                            1
+xsl:if                               10
+xsl:otherwise                         1
+xsl:output                            1
+xsl:strip-space                       1
+xsl:stylesheet                        1
+xsl:template                          8
+xsl:text                              1
+xsl:value-of                         18
+xsl:when                              1
+
+------------------------------------------------------------
+CAMPOS WWISE
+------------------------------------------------------------
+sourceID                           1152
+pluginID                              0
+mediaID                               0
+objectID                              0
+audioID                               0
+shortID                               0
+bankID                                1
+eventID                               0
+nodeID                                0
+streamType                         1152
+pluginType                            0
+language                              0
+name                                 12
+type                               1170
+id                                  110
+
+------------------------------------------------------------
+OBJETOS <obj>
+------------------------------------------------------------
+Total encontrado: 15441
+
+################ OBJETO 1 ################
+<obj na="BankHeader">
+<fld ty="4cc" na="dwTag" va="b&apos;BKHD&apos;" vf="b&apos;BKHD&apos; [Bank Header]"/>
+<fld ty="u32" na="dwChunkSize" va="28" vf="0x1C"/>
+<obj na="AkBankHeader">
+<fld ty="u32" na="dwBankGeneratorVersion" va="88"/>
+<fld ty="sid" na="dwSoundBankID" va="1417353184" hn="th4_000_common_vo" gn="TH4_000_Common_VO"/>
+<fld ty="u32" na="dwLanguageID" va="12" vf="0x0C [English(US)]"/>
+<fld ty="u32" na="bFeedbackInBank" va="0" vf="0x00"/>
+<fld ty="u32" na="dwProjectID" va="168"/>
+<fld ty="gap" na="padding" va="8" vf="0x08"/>
+</obj>
+
+################ OBJETO 2 ################
+<obj na="MediaIndex">
+<fld ty="4cc" na="dwTag" va="b&apos;DIDX&apos;" vf="b&apos;DIDX&apos; [Media Index]"/>
+<fld ty="u32" na="dwChunkSize" va="1260" vf="0x4EC"/>
+<lst na="pLoadedMedia" co="105">
+<obj na="MediaHeader" ix="0">
+<fld ty="sid" na="id" va="382402011"/>
+<fld ty="u32" na="uOffset" va="0" vf="0x00"/>
+<fld ty="u32" na="uSize" va="3846" vf="0xF06"/>
+</obj>
+
+################ OBJETO 3 ################
+<obj na="MediaHeader" ix="1">
+<fld ty="sid" na="id" va="836859547"/>
+<fld ty="u32" na="uOffset" va="3856" vf="0xF10"/>
+<fld ty="u32" na="uSize" va="3130" vf="0xC3A"/>
+</obj>
+
+################ OBJETO 4 ################
+<obj na="MediaHeader" ix="2">
+<fld ty="sid" na="id" va="353841134"/>
+<fld ty="u32" na="uOffset" va="6992" vf="0x1B50"/>
+<fld ty="u32" na="uSize" va="4988" vf="0x137C"/>
+</obj>
+
+################ OBJETO 5 ################
+<obj na="MediaHeader" ix="3">
+<fld ty="sid" na="id" va="781584840"/>
+<fld ty="u32" na="uOffset" va="11984" vf="0x2ED0"/>
+<fld ty="u32" na="uSize" va="3176" vf="0xC68"/>
+</obj>
+
+################ OBJETO 6 ################
+<obj na="MediaHeader" ix="4">
+<fld ty="sid" na="id" va="285607759"/>
+<fld ty="u32" na="uOffset" va="15168" vf="0x3B40"/>
+<fld ty="u32" na="uSize" va="6248" vf="0x1868"/>
+</obj>
+
+################ OBJETO 7 ################
+<obj na="MediaHeader" ix="5">
+<fld ty="sid" na="id" va="240912965"/>
+<fld ty="u32" na="uOffset" va="21424" vf="0x53B0"/>
+<fld ty="u32" na="uSize" va="2833" vf="0xB11"/>
+</obj>
+
+################ OBJETO 8 ################
+<obj na="MediaHeader" ix="6">
+<fld ty="sid" na="id" va="449603267"/>
+<fld ty="u32" na="uOffset" va="24272" vf="0x5ED0"/>
+<fld ty="u32" na="uSize" va="4211" vf="0x1073"/>
+</obj>
+
+################ OBJETO 9 ################
+<obj na="MediaHeader" ix="7">
+<fld ty="sid" na="id" va="823705667"/>
+<fld ty="u32" na="uOffset" va="28496" vf="0x6F50"/>
+<fld ty="u32" na="uSize" va="3443" vf="0xD73"/>
+</obj>
+
+################ OBJETO 10 ################
+<obj na="MediaHeader" ix="8">
+<fld ty="sid" na="id" va="371394614"/>
+<fld ty="u32" na="uOffset" va="31952" vf="0x7CD0"/>
+<fld ty="u32" na="uSize" va="4190" vf="0x105E"/>
+</obj>
+
+################ OBJETO 11 ################
+<obj na="MediaHeader" ix="9">
+<fld ty="sid" na="id" va="38372339"/>
+<fld ty="u32" na="uOffset" va="36144" vf="0x8D30"/>
+<fld ty="u32" na="uSize" va="3010" vf="0xBC2"/>
+</obj>
+
+################ OBJETO 12 ################
+<obj na="MediaHeader" ix="10">
+<fld ty="sid" na="id" va="431481085"/>
+<fld ty="u32" na="uOffset" va="39168" vf="0x9900"/>
+<fld ty="u32" na="uSize" va="3410" vf="0xD52"/>
+</obj>
+
+################ OBJETO 13 ################
+<obj na="MediaHeader" ix="11">
+<fld ty="sid" na="id" va="1063776406"/>
+<fld ty="u32" na="uOffset" va="42592" vf="0xA660"/>
+<fld ty="u32" na="uSize" va="3629" vf="0xE2D"/>
+</obj>
+
+################ OBJETO 14 ################
+<obj na="MediaHeader" ix="12">
+<fld ty="sid" na="id" va="431551151"/>
+<fld ty="u32" na="uOffset" va="46224" vf="0xB490"/>
+<fld ty="u32" na="uSize" va="4292" vf="0x10C4"/>
+</obj>
+
+################ OBJETO 15 ################
+<obj na="MediaHeader" ix="13">
+<fld ty="sid" na="id" va="140429898"/>
+<fld ty="u32" na="uOffset" va="50528" vf="0xC560"/>
+<fld ty="u32" na="uSize" va="2805" vf="0xAF5"/>
+</obj>
+
+################ OBJETO 16 ################
+<obj na="MediaHeader" ix="14">
+<fld ty="sid" na="id" va="401643321"/>
+<fld ty="u32" na="uOffset" va="53344" vf="0xD060"/>
+<fld ty="u32" na="uSize" va="3127" vf="0xC37"/>
+</obj>
+
+################ OBJETO 17 ################
+<obj na="MediaHeader" ix="15">
+<fld ty="sid" na="id" va="623153603"/>
+<fld ty="u32" na="uOffset" va="56480" vf="0xDCA0"/>
+<fld ty="u32" na="uSize" va="3468" vf="0xD8C"/>
+</obj>
+
+################ OBJETO 18 ################
+<obj na="MediaHeader" ix="16">
+<fld ty="sid" na="id" va="410268385"/>
+<fld ty="u32" na="uOffset" va="59952" vf="0xEA30"/>
+<fld ty="u32" na="uSize" va="3241" vf="0xCA9"/>
+</obj>
+
+################ OBJETO 19 ################
+<obj na="MediaHeader" ix="17">
+<fld ty="sid" na="id" va="337206063"/>
+<fld ty="u32" na="uOffset" va="63200" vf="0xF6E0"/>
+<fld ty="u32" na="uSize" va="3974" vf="0xF86"/>
+</obj>
+
+################ OBJETO 20 ################
+<obj na="MediaHeader" ix="18">
+<fld ty="sid" na="id" va="185096493"/>
+<fld ty="u32" na="uOffset" va="67184" vf="0x10670"/>
+<fld ty="u32" na="uSize" va="5910" vf="0x1716"/>
+</obj>
+
+################ OBJETO 21 ################
+<obj na="MediaHeader" ix="19">
+<fld ty="sid" na="id" va="123995673"/>
+<fld ty="u32" na="uOffset" va="73104" vf="0x11D90"/>
+<fld ty="u32" na="uSize" va="3529" vf="0xDC9"/>
+</obj>
+
+################ OBJETO 22 ################
+<obj na="MediaHeader" ix="20">
+<fld ty="sid" na="id" va="717250427"/>
+<fld ty="u32" na="uOffset" va="76640" vf="0x12B60"/>
+<fld ty="u32" na="uSize" va="4239" vf="0x108F"/>
+</obj>
+
+################ OBJETO 23 ################
+<obj na="MediaHeader" ix="21">
+<fld ty="sid" na="id" va="429713486"/>
+<fld ty="u32" na="uOffset" va="80880" vf="0x13BF0"/>
+<fld ty="u32" na="uSize" va="3253" vf="0xCB5"/>
+</obj>
+
+################ OBJETO 24 ################
+<obj na="MediaHeader" ix="22">
+<fld ty="sid" na="id" va="632520951"/>
+<fld ty="u32" na="uOffset" va="84144" vf="0x148B0"/>
+<fld ty="u32" na="uSize" va="3054" vf="0xBEE"/>
+</obj>
+
+################ OBJETO 25 ################
+<obj na="MediaHeader" ix="23">
+<fld ty="sid" na="id" va="860084154"/>
+<fld ty="u32" na="uOffset" va="87200" vf="0x154A0"/>
+<fld ty="u32" na="uSize" va="3036" vf="0xBDC"/>
+</obj>
+
+################ OBJETO 26 ################
+<obj na="MediaHeader" ix="24">
+<fld ty="sid" na="id" va="385288379"/>
+<fld ty="u32" na="uOffset" va="90240" vf="0x16080"/>
+<fld ty="u32" na="uSize" va="2980" vf="0xBA4"/>
+</obj>
+
+################ OBJETO 27 ################
+<obj na="MediaHeader" ix="25">
+<fld ty="sid" na="id" va="233438342"/>
+<fld ty="u32" na="uOffset" va="93232" vf="0x16C30"/>
+<fld ty="u32" na="uSize" va="3480" vf="0xD98"/>
+</obj>
+
+################ OBJETO 28 ################
+<obj na="MediaHeader" ix="26">
+<fld ty="sid" na="id" va="547039271"/>
+<fld ty="u32" na="uOffset" va="96720" vf="0x179D0"/>
+<fld ty="u32" na="uSize" va="2711" vf="0xA97"/>
+</obj>
+
+################ OBJETO 29 ################
+<obj na="MediaHeader" ix="27">
+<fld ty="sid" na="id" va="130398566"/>
+<fld ty="u32" na="uOffset" va="99440" vf="0x18470"/>
+<fld ty="u32" na="uSize" va="3935" vf="0xF5F"/>
+</obj>
+
+################ OBJETO 30 ################
+<obj na="MediaHeader" ix="28">
+<fld ty="sid" na="id" va="626322069"/>
+<fld ty="u32" na="uOffset" va="103376" vf="0x193D0"/>
+<fld ty="u32" na="uSize" va="4627" vf="0x1213"/>
+</obj>
+
+------------------------------------------------------------
+OCORRENCIAS DE sourceID
+------------------------------------------------------------
+Total de ocorrencias: 1152
+
+[1] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="1011213518"/> <fld ty="tid" na="uFileID" va="1011213518"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNum
+[2] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="884549210"/> <fld ty="tid" na="uFileID" va="884549210"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[3] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="572354245"/> <fld ty="tid" na="uFileID" va="572354245"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[4] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="791924021"/> <fld ty="tid" na="uFileID" va="791924021"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[5] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="110570427"/> <fld ty="tid" na="uFileID" va="110570427"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[6] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="917369937"/> <fld ty="tid" na="uFileID" va="917369937"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[7] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="85455385"/> <fld ty="tid" na="uFileID" va="85455385"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx" 
+[8] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="1050544152"/> <fld ty="tid" na="uFileID" va="1050544152"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNum
+[9] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="332168452"/> <fld ty="tid" na="uFileID" va="332168452"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[10] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="853338107"/> <fld ty="tid" na="uFileID" va="853338107"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[11] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="885837224"/> <fld ty="tid" na="uFileID" va="885837224"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[12] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="219721614"/> <fld ty="tid" na="uFileID" va="219721614"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[13] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="367584962"/> <fld ty="tid" na="uFileID" va="367584962"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[14] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="65816721"/> <fld ty="tid" na="uFileID" va="65816721"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx" 
+[15] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="581175625"/> <fld ty="tid" na="uFileID" va="581175625"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[16] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="296028953"/> <fld ty="tid" na="uFileID" va="296028953"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[17] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="111938917"/> <fld ty="tid" na="uFileID" va="111938917"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[18] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="278962303"/> <fld ty="tid" na="uFileID" va="278962303"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[19] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="359395123"/> <fld ty="tid" na="uFileID" va="359395123"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[20] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="258432156"/> <fld ty="tid" na="uFileID" va="258432156"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[21] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="507868355"/> <fld ty="tid" na="uFileID" va="507868355"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[22] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="187877902"/> <fld ty="tid" na="uFileID" va="187877902"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[23] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="631551399"/> <fld ty="tid" na="uFileID" va="631551399"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[24] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="452907922"/> <fld ty="tid" na="uFileID" va="452907922"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[25] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="622869614"/> <fld ty="tid" na="uFileID" va="622869614"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[26] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="941504960"/> <fld ty="tid" na="uFileID" va="941504960"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[27] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="396856693"/> <fld ty="tid" na="uFileID" va="396856693"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[28] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="291892974"/> <fld ty="tid" na="uFileID" va="291892974"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[29] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="170699724"/> <fld ty="tid" na="uFileID" va="170699724"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[30] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="644391300"/> <fld ty="tid" na="uFileID" va="644391300"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[31] a="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="227830401"/> <fld ty="tid" na="uFileID" va="227830401"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> <obj na="NodeInitialFxParams"> <fld ty="u8" na="bIsOverrideParentFX" va="0" vf="0x00"/> <fld ty="u8" na="uNumFx
+[32] na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="0" vf="0x00 [Data/bnk]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="28397653"/> <fld ty="tid" na="uFileID" va="1417353184" hn="th4_000_common_vo" gn="TH4_000_Common_VO"/> <fld ty="u32" na="uFileOffset" va="266224" vf="0x40FF0"/> <fld ty="u32" na="uInMemoryMediaSize" va="2186" vf="0x88A"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj
+[33]  va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="831866575"/> <fld ty="tid" na="uFileID" va="831866575"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSize" va="2336" vf="0x920"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> 
+[34]  va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="305371706"/> <fld ty="tid" na="uFileID" va="305371706"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSize" va="2425" vf="0x979"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> 
+[35]  va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="802166597"/> <fld ty="tid" na="uFileID" va="802166597"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSize" va="2286" vf="0x8EE"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> 
+[36]  va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="704692640"/> <fld ty="tid" na="uFileID" va="704692640"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSize" va="2941" vf="0xB7D"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> 
+[37]  va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="822386335"/> <fld ty="tid" na="uFileID" va="822386335"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSize" va="2398" vf="0x95E"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> 
+[38]  va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="324025043"/> <fld ty="tid" na="uFileID" va="324025043"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSize" va="2892" vf="0xB4C"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> 
+[39]  va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="508384238"/> <fld ty="tid" na="uFileID" va="508384238"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSize" va="2413" vf="0x96D"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> 
+[40]  va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="1004298845"/> <fld ty="tid" na="uFileID" va="1004298845"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSize" va="2448" vf="0x990"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1"/> <fld ty="bit1" na="bHasSource" va="0"/> <fld ty="bit2" na="bExternallySupplied" va="0"/> </fld> </obj> </obj> <obj na="NodeBaseParams"> 
+
+------------------------------------------------------------
+OCORRENCIAS DE pluginID
+------------------------------------------------------------
+Total de ocorrencias: 1152
+
+[1] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="723520379"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="1011213518"/> <fld ty="tid" na="uFileID" va="1011213518"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" v
+[2] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="759177831"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="884549210"/> <fld ty="tid" na="uFileID" va="884549210"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[3] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="59" vf="0x3B"/> <fld ty="sid" na="ulID" va="166502767"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="572354245"/> <fld ty="tid" na="uFileID" va="572354245"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[4] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="310623641"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="791924021"/> <fld ty="tid" na="uFileID" va="791924021"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[5] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="59" vf="0x3B"/> <fld ty="sid" na="ulID" va="599985710"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="110570427"/> <fld ty="tid" na="uFileID" va="110570427"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[6] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="59" vf="0x3B"/> <fld ty="sid" na="ulID" va="777064904"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="917369937"/> <fld ty="tid" na="uFileID" va="917369937"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[7]  ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="35823951"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="85455385"/> <fld ty="tid" na="uFileID" va="85455385"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1
+[8]  ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="48322268"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="1050544152"/> <fld ty="tid" na="uFileID" va="1050544152"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" v
+[9] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="431125421"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="332168452"/> <fld ty="tid" na="uFileID" va="332168452"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[10] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="526438744"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="853338107"/> <fld ty="tid" na="uFileID" va="853338107"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[11] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="745767781"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="885837224"/> <fld ty="tid" na="uFileID" va="885837224"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[12] d ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="2039034"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="219721614"/> <fld ty="tid" na="uFileID" va="219721614"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[13] d ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="7886798"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="367584962"/> <fld ty="tid" na="uFileID" va="367584962"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[14] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="101784772"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="65816721"/> <fld ty="tid" na="uFileID" va="65816721"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va="1
+[15] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="157758026"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="581175625"/> <fld ty="tid" na="uFileID" va="581175625"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[16] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="194343234"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="296028953"/> <fld ty="tid" na="uFileID" va="296028953"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[17] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="259208342"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="111938917"/> <fld ty="tid" na="uFileID" va="111938917"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[18] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="290330782"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="278962303"/> <fld ty="tid" na="uFileID" va="278962303"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[19] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="335574237"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="359395123"/> <fld ty="tid" na="uFileID" va="359395123"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[20] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="398328077"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="258432156"/> <fld ty="tid" na="uFileID" va="258432156"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[21] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="448285965"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="507868355"/> <fld ty="tid" na="uFileID" va="507868355"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[22] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="469538621"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="187877902"/> <fld ty="tid" na="uFileID" va="187877902"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[23] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="486790754"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="631551399"/> <fld ty="tid" na="uFileID" va="631551399"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[24] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="607180145"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="452907922"/> <fld ty="tid" na="uFileID" va="452907922"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[25] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="747922111"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="622869614"/> <fld ty="tid" na="uFileID" va="622869614"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[26] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="964549398"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="941504960"/> <fld ty="tid" na="uFileID" va="941504960"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[27] y="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="1039244062"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="396856693"/> <fld ty="tid" na="uFileID" va="396856693"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[28] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="944743452"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="291892974"/> <fld ty="tid" na="uFileID" va="291892974"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[29] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="356083530"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="170699724"/> <fld ty="tid" na="uFileID" va="170699724"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[30] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="580027746"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="644391300"/> <fld ty="tid" na="uFileID" va="644391300"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[31] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="64" vf="0x40"/> <fld ty="sid" na="ulID" va="991633241"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="1" vf="0x01 [Streaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="227830401"/> <fld ty="tid" na="uFileID" va="227830401"/> <fld ty="u8" na="uSourceBits" va="1" vf="0x01"> <fld ty="bit0" na="bIsLanguageSpecific" va=
+[32] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="72" vf="0x48"/> <fld ty="sid" na="ulID" va="120945987"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="0" vf="0x00 [Data/bnk]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="28397653"/> <fld ty="tid" na="uFileID" va="1417353184" hn="th4_000_common_vo" gn="TH4_000_Common_VO"/> <fld ty="u32" na="uFileOffset" va="266224" vf="0x40FF0"
+[33] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="67" vf="0x43"/> <fld ty="sid" na="ulID" va="151279467"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="831866575"/> <fld ty="tid" na="uFileID" va="831866575"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSi
+[34] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="67" vf="0x43"/> <fld ty="sid" na="ulID" va="321425575"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="305371706"/> <fld ty="tid" na="uFileID" va="305371706"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSi
+[35] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="67" vf="0x43"/> <fld ty="sid" na="ulID" va="482154530"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="802166597"/> <fld ty="tid" na="uFileID" va="802166597"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSi
+[36] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="67" vf="0x43"/> <fld ty="sid" na="ulID" va="608177259"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="704692640"/> <fld ty="tid" na="uFileID" va="704692640"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSi
+[37] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="67" vf="0x43"/> <fld ty="sid" na="ulID" va="612492065"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="822386335"/> <fld ty="tid" na="uFileID" va="822386335"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSi
+[38] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="67" vf="0x43"/> <fld ty="sid" na="ulID" va="665836850"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="324025043"/> <fld ty="tid" na="uFileID" va="324025043"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSi
+[39] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="67" vf="0x43"/> <fld ty="sid" na="ulID" va="726780359"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="508384238"/> <fld ty="tid" na="uFileID" va="508384238"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMediaSi
+[40] ty="u8" na="eHircType" va="2" vf="0x02 [Sound]"/> <fld ty="u32" na="dwSectionSize" va="67" vf="0x43"/> <fld ty="sid" na="ulID" va="765137024"/> <obj na="SoundInitialValues"> <obj na="AkBankSourceData"> <fld ty="u32" na="ulPluginID" va="262145" vf="0x00040001 [VORBIS]"> <fld ty="u16" na="type" va="1" vf="0x01 [Codec]"/> <fld ty="u16" na="company" va="0" vf="0x00 [Audiokinetic]"/> </fld> <fld ty="u32" na="StreamType" va="2" vf="0x02 [PrefetchStreaming]"/> <obj na="AkMediaInformation"> <fld ty="tid" na="sourceID" va="1004298845"/> <fld ty="tid" na="uFileID" va="1004298845"/> <fld ty="u32" na="uFileOffset" va="0" vf="0x00"/> <fld ty="u32" na="uInMemoryMedia
+
