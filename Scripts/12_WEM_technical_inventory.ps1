@@ -1,6 +1,7 @@
 ﻿# ============================================================
-# THIEF 2014 - SCRIPT 12
+# THIEF 2014 - SCRIPT 12B
 # INVENTARIO TECNICO DOS WEM
+# CORRECAO DO PARSER VGMSTREAM
 # ============================================================
 
 $ErrorActionPreference = "Stop"
@@ -20,7 +21,7 @@ $RawDir = Join-Path $Repo "Analysis\WEM\vgmstream_raw"
 
 Write-Host ""
 Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host " THIEF 2014 - WEM TECHNICAL INVENTORY 12" -ForegroundColor Cyan
+Write-Host " THIEF 2014 - WEM TECHNICAL INVENTORY 12B" -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -134,38 +135,90 @@ foreach ($Row in $Graph) {
             continue
         }
 
-        $Codec = ""
+        $Encoding = ""
+        $Layout = ""
         $SampleRate = ""
         $Channels = ""
-        $Streams = ""
-        $Looping = ""
+        $ChannelMask = ""
+        $Bitrate = ""
+        $SampleType = ""
+        $StreamTotalSamples = ""
         $DurationSec = $null
+        $Looping = ""
 
-        if ($Output -match '(?im)^\s*stream codec:\s*(.+)$') {
-            $Codec = $Matches[1].Trim()
-        }
+        # ----------------------------------------------------
+        # SAMPLE RATE
+        # ----------------------------------------------------
 
         if ($Output -match '(?im)^\s*sample rate:\s*(.+)$') {
             $SampleRate = $Matches[1].Trim()
         }
 
+        # ----------------------------------------------------
+        # CHANNELS
+        # ----------------------------------------------------
+
         if ($Output -match '(?im)^\s*channels:\s*(.+)$') {
             $Channels = $Matches[1].Trim()
         }
 
-        if ($Output -match '(?im)^\s*stream count:\s*(.+)$') {
-            $Streams = $Matches[1].Trim()
+        # ----------------------------------------------------
+        # CHANNEL MASK
+        # ----------------------------------------------------
+
+        if ($Output -match '(?im)^\s*channel mask:\s*(.+)$') {
+            $ChannelMask = $Matches[1].Trim()
         }
 
-        if ($Output -match '(?im)^\s*looping:\s*(.+)$') {
-            $Looping = $Matches[1].Trim()
+        # ----------------------------------------------------
+        # ENCODING
+        # ----------------------------------------------------
+
+        if ($Output -match '(?im)^\s*encoding:\s*(.+)$') {
+            $Encoding = $Matches[1].Trim()
         }
 
-        if ($Output -match '(?im)^\s*play duration:\s*(.+)$') {
+        # ----------------------------------------------------
+        # LAYOUT
+        # ----------------------------------------------------
+
+        if ($Output -match '(?im)^\s*layout:\s*(.+)$') {
+            $Layout = $Matches[1].Trim()
+        }
+
+        # ----------------------------------------------------
+        # BITRATE
+        # ----------------------------------------------------
+
+        if ($Output -match '(?im)^\s*bitrate:\s*(.+)$') {
+            $Bitrate = $Matches[1].Trim()
+        }
+
+        # ----------------------------------------------------
+        # SAMPLE TYPE
+        # ----------------------------------------------------
+
+        if ($Output -match '(?im)^\s*sample type:\s*(.+)$') {
+            $SampleType = $Matches[1].Trim()
+        }
+
+        # ----------------------------------------------------
+        # STREAM TOTAL SAMPLES
+        # ----------------------------------------------------
+
+        if ($Output -match '(?im)^\s*stream total samples:\s*(\d+)') {
+            $StreamTotalSamples = $Matches[1]
+        }
+
+        # ----------------------------------------------------
+        # PLAY DURATION
+        # ----------------------------------------------------
+
+        if ($Output -match '(?im)^\s*play duration:\s*\d+\s*samples\s*\(([^)]+)\)') {
 
             $DurationText = $Matches[1].Trim()
 
-            if ($DurationText -match '^(\d+):(\d{2})\.(\d+)$') {
+            if ($DurationText -match '^(\d+):(\d{2})\.(\d+)\s*seconds?$') {
 
                 $Minutes = [double]$Matches[1]
                 $Seconds = [double]$Matches[2]
@@ -176,7 +229,7 @@ foreach ($Row in $Graph) {
                     $Seconds +
                     $Fraction
             }
-            elseif ($DurationText -match '^(\d+):(\d{2}):(\d{2})\.(\d+)$') {
+            elseif ($DurationText -match '^(\d+):(\d{2}):(\d{2})\.(\d+)\s*seconds?$') {
 
                 $Hours = [double]$Matches[1]
                 $Minutes = [double]$Matches[2]
@@ -191,22 +244,34 @@ foreach ($Row in $Graph) {
             }
         }
 
+        # ----------------------------------------------------
+        # LOOPING
+        # ----------------------------------------------------
+
+        if ($Output -match '(?im)^\s*looping:\s*(.+)$') {
+            $Looping = $Matches[1].Trim()
+        }
+
         $Results.Add([pscustomobject]@{
-            EventID        = $Row.EventID
-            ActionID       = $Row.ActionID
-            SoundID        = $Row.SoundID
-            SourceID       = $SourceID
-            WEM            = $WemName
-            StreamType     = $Row.StreamType
-            SizeBytes      = $FileInfo.Length
-            SizeKB         = [math]::Round($FileInfo.Length / 1KB, 2)
-            Codec          = $Codec
-            SampleRate     = $SampleRate
-            Channels       = $Channels
-            Streams        = $Streams
-            DurationSec    = $DurationSec
-            Looping        = $Looping
-            VgmstreamExit  = $ExitCode
+            EventID            = $Row.EventID
+            ActionID           = $Row.ActionID
+            SoundID            = $Row.SoundID
+            SourceID           = $SourceID
+            WEM                = $WemName
+            StreamType         = $Row.StreamType
+            SizeBytes          = $FileInfo.Length
+            SizeKB             = [math]::Round($FileInfo.Length / 1KB, 2)
+            Encoding           = $Encoding
+            Layout             = $Layout
+            SampleRate         = $SampleRate
+            Channels           = $Channels
+            ChannelMask        = $ChannelMask
+            Bitrate            = $Bitrate
+            SampleType         = $SampleType
+            StreamTotalSamples = $StreamTotalSamples
+            DurationSec        = $DurationSec
+            Looping            = $Looping
+            VgmstreamExit      = $ExitCode
         })
     }
     catch {
@@ -237,8 +302,12 @@ $Errors |
         -NoTypeInformation `
         -Encoding UTF8
 
-$CodecGroups = $Results |
-    Group-Object Codec |
+# ------------------------------------------------------------
+# ESTATISTICAS
+# ------------------------------------------------------------
+
+$EncodingGroups = $Results |
+    Group-Object Encoding |
     Sort-Object Count -Descending
 
 $SampleRateGroups = $Results |
@@ -251,6 +320,14 @@ $ChannelGroups = $Results |
 
 $StreamTypeGroups = $Results |
     Group-Object StreamType |
+    Sort-Object Count -Descending
+
+$LayoutGroups = $Results |
+    Group-Object Layout |
+    Sort-Object Count -Descending
+
+$SampleTypeGroups = $Results |
+    Group-Object SampleType |
     Sort-Object Count -Descending
 
 $ValidDurations = @(
@@ -269,6 +346,7 @@ if ($ValidDurations.Count -gt 0) {
     $MaxDuration = ($ValidDurations | Measure-Object -Maximum).Maximum
     $AvgDuration = ($ValidDurations | Measure-Object -Average).Average
     $TotalDuration = ($ValidDurations | Measure-Object -Sum).Sum
+
 }
 else {
 
@@ -277,6 +355,10 @@ else {
     $AvgDuration = 0
     $TotalDuration = 0
 }
+
+# ------------------------------------------------------------
+# RELATORIO
+# ------------------------------------------------------------
 
 Write-Host ""
 Write-Host "[5/6] Gerando relatorio..."
@@ -307,11 +389,11 @@ $ReportLines.Add(("Duracao total:  {0:N3} s" -f $TotalDuration))
 $ReportLines.Add("")
 
 $ReportLines.Add("============================================================")
-$ReportLines.Add(" CODECS")
+$ReportLines.Add(" ENCODING")
 $ReportLines.Add("============================================================")
 $ReportLines.Add("")
 
-foreach ($Group in $CodecGroups) {
+foreach ($Group in $EncodingGroups) {
     $ReportLines.Add(
         ("{0} = {1}" -f $Group.Name, $Group.Count)
     )
@@ -336,6 +418,30 @@ $ReportLines.Add("============================================================")
 $ReportLines.Add("")
 
 foreach ($Group in $ChannelGroups) {
+    $ReportLines.Add(
+        ("{0} = {1}" -f $Group.Name, $Group.Count)
+    )
+}
+
+$ReportLines.Add("")
+$ReportLines.Add("============================================================")
+$ReportLines.Add(" LAYOUT")
+$ReportLines.Add("============================================================")
+$ReportLines.Add("")
+
+foreach ($Group in $LayoutGroups) {
+    $ReportLines.Add(
+        ("{0} = {1}" -f $Group.Name, $Group.Count)
+    )
+}
+
+$ReportLines.Add("")
+$ReportLines.Add("============================================================")
+$ReportLines.Add(" SAMPLE TYPE")
+$ReportLines.Add("============================================================")
+$ReportLines.Add("")
+
+foreach ($Group in $SampleTypeGroups) {
     $ReportLines.Add(
         ("{0} = {1}" -f $Group.Name, $Group.Count)
     )
@@ -369,7 +475,7 @@ $Results |
                 $_.WEM,
                 [double]$_.SizeKB,
                 [double]$_.DurationSec,
-                $_.Codec,
+                $_.Encoding,
                 $_.Channels)
         )
     }
@@ -393,7 +499,7 @@ $Results |
                 $_.WEM,
                 [double]$_.DurationSec,
                 [double]$_.SizeKB,
-                $_.Codec,
+                $_.Encoding,
                 $_.EventID)
         )
     }
@@ -407,6 +513,7 @@ $ReportLines.Add("")
 if ($Errors.Count -eq 0) {
 
     $ReportLines.Add("Nenhum erro encontrado.")
+
 }
 else {
 
@@ -429,6 +536,10 @@ $ReportLines.Add("============================================================")
 $ReportLines |
     Set-Content -Path $Report -Encoding UTF8
 
+# ------------------------------------------------------------
+# GIT
+# ------------------------------------------------------------
+
 Write-Host ""
 Write-Host "[6/6] Git..." -ForegroundColor Yellow
 
@@ -441,22 +552,19 @@ git add `
     "Analysis/WEM/vgmstream_raw" `
     "Analysis/Reports/wem_technical_inventory_report.txt"
 
-git commit -m "Add WEM technical inventory"
+git commit -m "Fix WEM metadata parser"
 
 git push
 
 Write-Host ""
 Write-Host "============================================================" -ForegroundColor Green
-Write-Host " WEM TECHNICAL INVENTORY 12 CONCLUIDO" -ForegroundColor Green
+Write-Host " WEM TECHNICAL INVENTORY 12B CONCLUIDO" -ForegroundColor Green
 Write-Host "============================================================" -ForegroundColor Green
 Write-Host ""
 Write-Host "Grafo:       $Total"
 Write-Host "Analisados:  $($Results.Count)"
 Write-Host "Erros:       $($Errors.Count)"
 Write-Host "Duracoes:    $($ValidDurations.Count)"
-Write-Host ""
-Write-Host "Arquivo:"
-Write-Host $Report
 Write-Host ""
 Write-Host "Git sincronizado." -ForegroundColor Green
 Write-Host ""

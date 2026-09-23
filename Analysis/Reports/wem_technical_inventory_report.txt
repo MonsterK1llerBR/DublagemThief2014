@@ -13,18 +13,18 @@ WEM root: B:\Thief2014_Dubbing\Extracted\th4_000_common_vo
 Registros no grafo:   1149
 WEM analisados:       1148
 Erros:                1
-Duracoes encontradas: 0
+Duracoes encontradas: 1148
 
-Duracao minima: 0,000 s
-Duracao maxima: 0,000 s
-Duracao media:  0,000 s
-Duracao total:  0,000 s
+Duracao minima: 0,234 s
+Duracao maxima: 44,107 s
+Duracao media:  3,953 s
+Duracao total:  4.538,566 s
 
 ============================================================
- CODECS
+ ENCODING
 ============================================================
 
- = 1148
+Custom Vorbis = 1148
 
 ============================================================
  SAMPLE RATE
@@ -39,6 +39,18 @@ Duracao total:  0,000 s
 1 = 1148
 
 ============================================================
+ LAYOUT
+============================================================
+
+flat = 1148
+
+============================================================
+ SAMPLE TYPE
+============================================================
+
+float = 1148
+
+============================================================
  STREAM TYPE
 ============================================================
 
@@ -50,31 +62,51 @@ Duracao total:  0,000 s
  MAIORES ARQUIVOS
 ============================================================
 
-315025654.wem | 344,88 KB | 0,000s |  | 1
-316454681.wem | 293,33 KB | 0,000s |  | 1
-791924021.wem | 285,87 KB | 0,000s |  | 1
-170699724.wem | 281,96 KB | 0,000s |  | 1
-853338107.wem | 268,27 KB | 0,000s |  | 1
-227830401.wem | 260,37 KB | 0,000s |  | 1
-468166270.wem | 235,39 KB | 0,000s |  | 1
-285607759.wem | 211,46 KB | 0,000s |  | 1
-185096493.wem | 204,98 KB | 0,000s |  | 1
-202264735.wem | 187,63 KB | 0,000s |  | 1
-324489994.wem | 174,34 KB | 0,000s |  | 1
-117431200.wem | 145,47 KB | 0,000s |  | 1
-500049807.wem | 141,93 KB | 0,000s |  | 1
-591196620.wem | 139,97 KB | 0,000s |  | 1
-353841134.wem | 139,65 KB | 0,000s |  | 1
-536154943.wem | 134,74 KB | 0,000s |  | 1
-891536372.wem | 133,24 KB | 0,000s |  | 1
-676334691.wem | 126,67 KB | 0,000s |  | 1
-1032112512.wem | 119,33 KB | 0,000s |  | 1
-181960664.wem | 114,00 KB | 0,000s |  | 1
+315025654.wem | 344,88 KB | 44,107s | Custom Vorbis | 1
+316454681.wem | 293,33 KB | 29,821s | Custom Vorbis | 1
+791924021.wem | 285,87 KB | 26,590s | Custom Vorbis | 1
+170699724.wem | 281,96 KB | 28,824s | Custom Vorbis | 1
+853338107.wem | 268,27 KB | 26,801s | Custom Vorbis | 1
+227830401.wem | 260,37 KB | 24,262s | Custom Vorbis | 1
+468166270.wem | 235,39 KB | 26,286s | Custom Vorbis | 1
+285607759.wem | 211,46 KB | 27,200s | Custom Vorbis | 1
+185096493.wem | 204,98 KB | 26,725s | Custom Vorbis | 1
+202264735.wem | 187,63 KB | 24,336s | Custom Vorbis | 1
+324489994.wem | 174,34 KB | 21,349s | Custom Vorbis | 1
+117431200.wem | 145,47 KB | 19,613s | Custom Vorbis | 1
+500049807.wem | 141,93 KB | 17,149s | Custom Vorbis | 1
+591196620.wem | 139,97 KB | 17,155s | Custom Vorbis | 1
+353841134.wem | 139,65 KB | 18,808s | Custom Vorbis | 1
+536154943.wem | 134,74 KB | 23,465s | Custom Vorbis | 1
+891536372.wem | 133,24 KB | 17,429s | Custom Vorbis | 1
+676334691.wem | 126,67 KB | 16,422s | Custom Vorbis | 1
+1032112512.wem | 119,33 KB | 14,812s | Custom Vorbis | 1
+181960664.wem | 114,00 KB | 13,768s | Custom Vorbis | 1
 
 ============================================================
  MAIORES DURACOES
 ============================================================
 
+315025654.wem | 44,107s | 344,88 KB | Custom Vorbis | Event=2769386522
+316454681.wem | 29,821s | 293,33 KB | Custom Vorbis | Event=195402501
+170699724.wem | 28,824s | 281,96 KB | Custom Vorbis | Event=3700075934
+285607759.wem | 27,200s | 211,46 KB | Custom Vorbis | Event=943478013
+853338107.wem | 26,801s | 268,27 KB | Custom Vorbis | Event=919961890
+185096493.wem | 26,725s | 204,98 KB | Custom Vorbis | Event=2043040516
+791924021.wem | 26,590s | 285,87 KB | Custom Vorbis | Event=2777867240
+468166270.wem | 26,286s | 235,39 KB | Custom Vorbis | Event=2169349947
+202264735.wem | 24,336s | 187,63 KB | Custom Vorbis | Event=2983809071
+227830401.wem | 24,262s | 260,37 KB | Custom Vorbis | Event=2994106687
+536154943.wem | 23,465s | 134,74 KB | Custom Vorbis | Event=2910534179
+324489994.wem | 21,349s | 174,34 KB | Custom Vorbis | Event=1449599358
+117431200.wem | 19,613s | 145,47 KB | Custom Vorbis | Event=2697836364
+353841134.wem | 18,808s | 139,65 KB | Custom Vorbis | Event=1252812179
+891536372.wem | 17,429s | 133,24 KB | Custom Vorbis | Event=2149964272
+591196620.wem | 17,155s | 139,97 KB | Custom Vorbis | Event=1956862132
+500049807.wem | 17,149s | 141,93 KB | Custom Vorbis | Event=3251826310
+676334691.wem | 16,422s | 126,67 KB | Custom Vorbis | Event=171366236
+1032112512.wem | 14,812s | 119,33 KB | Custom Vorbis | Event=180893011
+313851490.wem | 14,285s | 107,28 KB | Custom Vorbis | Event=2203305525
 
 ============================================================
  ERROS
