@@ -1,0 +1,43 @@
+﻿
+============================================================
+ THIEF 2014 - VOICE AUDITION LIBRARY
+ SCRIPT 14
+============================================================
+
+Execucao:
+09/23/2026 00:03:08
+
+Final:
+09/23/2026 00:03:27
+
+Tempo:
+00:00:19.1986280
+
+------------------------------------------------------------
+RESUMO
+------------------------------------------------------------
+
+Candidatos CSV:       1144
+WEM locais:           1151
+
+Convertidos:          1144
+Ja existentes:        0
+Fonte ausente:        0
+Erros conversao:      0
+
+Tamanho dos lotes:    100
+
+------------------------------------------------------------
+ARQUIVOS
+------------------------------------------------------------
+
+Manifest:
+B:\DublagemThief2014\Analysis\WEM\voice_audition_manifest.csv
+
+HTML:
+B:\Thief2014_Dubbing\Work\VoiceAudition\index.html
+
+Pasta de trabalho:
+B:\Thief2014_Dubbing\Work\VoiceAudition
+
+============================================================
