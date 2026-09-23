@@ -1,0 +1,145 @@
+============================================================
+ THIEF 2014 - SOURCEID / WEM CROSSCHECK
+============================================================
+
+XML:
+B:\DublagemThief2014\Analysis\BNK\th4_000_common_vo.bnk.xml
+
+Inventario:
+B:\DublagemThief2014\Analysis\WEM\wem_inventory.csv
+
+------------------------------------------------------------
+CONTAGENS
+------------------------------------------------------------
+WEM no inventario:              1151
+AkMediaInformation:             1152
+SourceID unicos:                1152
+SourceID com WEM:               1151
+SourceID sem WEM:               
+WEM sem SourceID:               0
+MediaHeader embutidos:          105
+
+------------------------------------------------------------
+SOURCEID SEM WEM
+------------------------------------------------------------
+SourceID=680130212 | UFileID=0 | StreamType=0 | LanguageSpecific= | HasSource= | External= | Parent=AkBankSourceData
+
+------------------------------------------------------------
+WEM SEM SOURCEID
+------------------------------------------------------------
+NENHUM.
+
+------------------------------------------------------------
+MEDIAHEADERS EMBUTIDOS
+------------------------------------------------------------
+Index=0 | ID=382402011 | Offset=0 | Size=3846 | WEMFound=True
+Index=1 | ID=836859547 | Offset=3856 | Size=3130 | WEMFound=True
+Index=2 | ID=353841134 | Offset=6992 | Size=4988 | WEMFound=True
+Index=3 | ID=781584840 | Offset=11984 | Size=3176 | WEMFound=True
+Index=4 | ID=285607759 | Offset=15168 | Size=6248 | WEMFound=True
+Index=5 | ID=240912965 | Offset=21424 | Size=2833 | WEMFound=True
+Index=6 | ID=449603267 | Offset=24272 | Size=4211 | WEMFound=True
+Index=7 | ID=823705667 | Offset=28496 | Size=3443 | WEMFound=True
+Index=8 | ID=371394614 | Offset=31952 | Size=4190 | WEMFound=True
+Index=9 | ID=38372339 | Offset=36144 | Size=3010 | WEMFound=True
+Index=10 | ID=431481085 | Offset=39168 | Size=3410 | WEMFound=True
+Index=11 | ID=1063776406 | Offset=42592 | Size=3629 | WEMFound=True
+Index=12 | ID=431551151 | Offset=46224 | Size=4292 | WEMFound=True
+Index=13 | ID=140429898 | Offset=50528 | Size=2805 | WEMFound=True
+Index=14 | ID=401643321 | Offset=53344 | Size=3127 | WEMFound=True
+Index=15 | ID=623153603 | Offset=56480 | Size=3468 | WEMFound=True
+Index=16 | ID=410268385 | Offset=59952 | Size=3241 | WEMFound=True
+Index=17 | ID=337206063 | Offset=63200 | Size=3974 | WEMFound=True
+Index=18 | ID=185096493 | Offset=67184 | Size=5910 | WEMFound=True
+Index=19 | ID=123995673 | Offset=73104 | Size=3529 | WEMFound=True
+Index=20 | ID=717250427 | Offset=76640 | Size=4239 | WEMFound=True
+Index=21 | ID=429713486 | Offset=80880 | Size=3253 | WEMFound=True
+Index=22 | ID=632520951 | Offset=84144 | Size=3054 | WEMFound=True
+Index=23 | ID=860084154 | Offset=87200 | Size=3036 | WEMFound=True
+Index=24 | ID=385288379 | Offset=90240 | Size=2980 | WEMFound=True
+Index=25 | ID=233438342 | Offset=93232 | Size=3480 | WEMFound=True
+Index=26 | ID=547039271 | Offset=96720 | Size=2711 | WEMFound=True
+Index=27 | ID=130398566 | Offset=99440 | Size=3935 | WEMFound=True
+Index=28 | ID=626322069 | Offset=103376 | Size=4627 | WEMFound=True
+Index=29 | ID=712654566 | Offset=108016 | Size=3211 | WEMFound=True
+Index=30 | ID=575396518 | Offset=111232 | Size=2923 | WEMFound=True
+Index=31 | ID=415162792 | Offset=114160 | Size=2662 | WEMFound=True
+Index=32 | ID=514246346 | Offset=116832 | Size=3479 | WEMFound=True
+Index=33 | ID=201433572 | Offset=120320 | Size=2719 | WEMFound=True
+Index=34 | ID=313851490 | Offset=123040 | Size=4644 | WEMFound=True
+Index=35 | ID=157056275 | Offset=127696 | Size=2763 | WEMFound=True
+Index=36 | ID=246609026 | Offset=130464 | Size=4069 | WEMFound=True
+Index=37 | ID=323532677 | Offset=134544 | Size=2764 | WEMFound=True
+Index=38 | ID=250104555 | Offset=137312 | Size=3331 | WEMFound=True
+Index=39 | ID=3425580 | Offset=140656 | Size=3205 | WEMFound=True
+Index=40 | ID=105106109 | Offset=143872 | Size=3264 | WEMFound=True
+Index=41 | ID=295197945 | Offset=147136 | Size=3200 | WEMFound=True
+Index=42 | ID=846917398 | Offset=150336 | Size=2577 | WEMFound=True
+Index=43 | ID=713057920 | Offset=152928 | Size=3809 | WEMFound=True
+Index=44 | ID=739960959 | Offset=156752 | Size=3196 | WEMFound=True
+Index=45 | ID=202264735 | Offset=159952 | Size=5406 | WEMFound=True
+Index=46 | ID=969023310 | Offset=165360 | Size=3582 | WEMFound=True
+Index=47 | ID=346829381 | Offset=168944 | Size=3144 | WEMFound=True
+Index=48 | ID=272200703 | Offset=172096 | Size=2821 | WEMFound=True
+Index=49 | ID=272522425 | Offset=174928 | Size=3123 | WEMFound=True
+Index=50 | ID=253212335 | Offset=178064 | Size=2773 | WEMFound=True
+Index=51 | ID=536154943 | Offset=180848 | Size=5415 | WEMFound=True
+Index=52 | ID=755501008 | Offset=186272 | Size=3267 | WEMFound=True
+Index=53 | ID=718012839 | Offset=189552 | Size=2786 | WEMFound=True
+Index=54 | ID=874935267 | Offset=192352 | Size=3357 | WEMFound=True
+Index=55 | ID=616565789 | Offset=195712 | Size=2599 | WEMFound=True
+Index=56 | ID=731848657 | Offset=198320 | Size=2909 | WEMFound=True
+Index=57 | ID=795110502 | Offset=201232 | Size=4064 | WEMFound=True
+Index=58 | ID=398622759 | Offset=205296 | Size=3727 | WEMFound=True
+Index=59 | ID=591196620 | Offset=209024 | Size=4515 | WEMFound=True
+Index=60 | ID=322706511 | Offset=213552 | Size=2941 | WEMFound=True
+Index=61 | ID=920202335 | Offset=216496 | Size=2580 | WEMFound=True
+Index=62 | ID=20696694 | Offset=219088 | Size=3268 | WEMFound=True
+Index=63 | ID=448827065 | Offset=222368 | Size=3040 | WEMFound=True
+Index=64 | ID=1012272758 | Offset=225408 | Size=3672 | WEMFound=True
+Index=65 | ID=458958901 | Offset=229088 | Size=3425 | WEMFound=True
+Index=66 | ID=334746582 | Offset=232528 | Size=2713 | WEMFound=True
+Index=67 | ID=461795631 | Offset=235248 | Size=4280 | WEMFound=True
+Index=68 | ID=647942636 | Offset=239536 | Size=2912 | WEMFound=True
+Index=69 | ID=655167511 | Offset=242448 | Size=3840 | WEMFound=True
+Index=70 | ID=142501603 | Offset=246288 | Size=3134 | WEMFound=True
+Index=71 | ID=723186224 | Offset=249424 | Size=3814 | WEMFound=True
+Index=72 | ID=898001860 | Offset=253248 | Size=3152 | WEMFound=True
+Index=73 | ID=558462656 | Offset=256400 | Size=3023 | WEMFound=True
+Index=74 | ID=831866575 | Offset=259424 | Size=2336 | WEMFound=True
+Index=75 | ID=115875410 | Offset=261760 | Size=3137 | WEMFound=True
+Index=76 | ID=28397653 | Offset=264912 | Size=2186 | WEMFound=True
+Index=77 | ID=289836723 | Offset=267104 | Size=2955 | WEMFound=True
+Index=78 | ID=508384238 | Offset=270064 | Size=2413 | WEMFound=True
+Index=79 | ID=159921588 | Offset=272480 | Size=3192 | WEMFound=True
+Index=80 | ID=434389044 | Offset=275680 | Size=2728 | WEMFound=True
+Index=81 | ID=441080534 | Offset=278416 | Size=3484 | WEMFound=True
+Index=82 | ID=802166597 | Offset=281904 | Size=2286 | WEMFound=True
+Index=83 | ID=99395565 | Offset=284192 | Size=3353 | WEMFound=True
+Index=84 | ID=1004298845 | Offset=287552 | Size=2448 | WEMFound=True
+Index=85 | ID=110723765 | Offset=290000 | Size=3106 | WEMFound=True
+Index=86 | ID=704692640 | Offset=293120 | Size=2941 | WEMFound=True
+Index=87 | ID=585322642 | Offset=296064 | Size=2576 | WEMFound=True
+Index=88 | ID=324025043 | Offset=298640 | Size=2892 | WEMFound=True
+Index=89 | ID=1040911784 | Offset=301536 | Size=3352 | WEMFound=True
+Index=90 | ID=822386335 | Offset=304896 | Size=2398 | WEMFound=True
+Index=91 | ID=136987909 | Offset=307296 | Size=2684 | WEMFound=True
+Index=92 | ID=305371706 | Offset=309984 | Size=2425 | WEMFound=True
+Index=93 | ID=253103376 | Offset=312416 | Size=2702 | WEMFound=True
+Index=94 | ID=276506526 | Offset=315120 | Size=3261 | WEMFound=True
+Index=95 | ID=833202924 | Offset=318384 | Size=3225 | WEMFound=True
+Index=96 | ID=911543220 | Offset=321616 | Size=3703 | WEMFound=True
+Index=97 | ID=833742253 | Offset=325328 | Size=2985 | WEMFound=True
+Index=98 | ID=891536372 | Offset=328320 | Size=5115 | WEMFound=True
+Index=99 | ID=366831874 | Offset=333440 | Size=3146 | WEMFound=True
+Index=100 | ID=846685508 | Offset=336592 | Size=3379 | WEMFound=True
+Index=101 | ID=697282788 | Offset=339984 | Size=3044 | WEMFound=True
+Index=102 | ID=117431200 | Offset=343040 | Size=5062 | WEMFound=True
+Index=103 | ID=237528681 | Offset=348112 | Size=2716 | WEMFound=True
+Index=104 | ID=697193758 | Offset=350832 | Size=4151 | WEMFound=True
+
+Arquivos gerados:
+B:\DublagemThief2014\Analysis\BNK\Structure\source_wem_map.csv
+B:\DublagemThief2014\Analysis\BNK\Structure\source_without_wem.csv
+B:\DublagemThief2014\Analysis\BNK\Structure\wem_without_source.csv
+B:\DublagemThief2014\Analysis\BNK\Structure\embedded_media_headers.csv
