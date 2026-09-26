@@ -1,0 +1,41 @@
+﻿THIEF 2014 - DUBBING WORKSET
+SCRIPT 18
+
+Data: 2026-09-26 00:00:44
+
+CSV de origem:
+C:\Users\natan\OneDrive\Área de Trabalho\Thief MODS\!\thief2014_voice_triage_2026-09-26T02-54-05-772Z.csv
+
+RESULTADO
+----------------------------------------
+Registros no CSV:      1144
+Registros no workset:  220
+Registros ignorados:   924
+
+FALA:                  203
+GRITO:                 11
+VOCALIZAÇÃO:           6
+
+Com transcrição:       0
+Com personagem:        0
+
+Áudios encontrados:     220
+Áudios ausentes:        0
+
+CSV gerado:
+B:\DublagemThief2014\Analysis\WEM\dubbing_workset.csv
+
+REGRAS
+----------------------------------------
+Incluídos:
+  FALA
+  GRITO
+  VOCALIZAÇÃO
+
+Excluídos:
+  EFEITO
+  DESCARTAR
+  PENDENTE
+
+Character, OriginalTranscript e PTBR
+podem ser preenchidos posteriormente.
