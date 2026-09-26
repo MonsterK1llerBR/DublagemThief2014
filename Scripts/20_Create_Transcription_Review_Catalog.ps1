@@ -209,10 +209,10 @@ foreach ($Row in $Rows) {
         $AudioMissing++
     }
 
-    $Transcript = Get-SafeString $Row.Transcript
+    $Transcript = Get-SafeString $Row.OriginalTranscript
 
-    if (-not [string]::IsNullOrWhiteSpace($Transcript)) {
-        $Transcribed++
+    if ([string]::IsNullOrWhiteSpace($Transcript)) {
+        $Transcript = Get-SafeString $Row.Transcript
     }
 
     $Status = Get-SafeString $Row.Status
