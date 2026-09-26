@@ -167,7 +167,7 @@ function Get-RelativeAudioInfo {
         $WavName = $WemBase + ".wav"
     }
 
-    $RelativePath = "$Batch/$WavName"
+    $RelativePath = "../$Batch/$WavName"
 
     $PhysicalPath = Join-Path `
         (Join-Path $VoiceRoot $Batch) `
