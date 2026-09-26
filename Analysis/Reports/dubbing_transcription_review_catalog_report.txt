@@ -1,0 +1,44 @@
+﻿============================================================
+ THIEF 2014 - TRANSCRIPTION REVIEW - SCRIPT 20
+============================================================
+
+Gerado em: 2026-09-26 00:26:18
+
+ENTRADA
+CSV: B:\DublagemThief2014\Analysis\WEM\dubbing_transcription.csv
+
+AUDIO
+Root: B:\Thief2014_Dubbing\Work\VoiceAudition
+
+SAIDA
+HTML: B:\Thief2014_Dubbing\Work\VoiceAudition\TranscriptionReview\transcription_review.html
+
+ESTATISTICAS
+Registros:        10
+Audios encontrados: 10
+Audios ausentes:    0
+Transcritos:         0
+Sem fala:            0
+Erros:               0
+
+HTML
+Tamanho bytes: 30650
+
+RECURSOS
+- Reproducao de audio
+- Transcricao automatica
+- Revisao CORRETA
+- Revisao PARCIAL
+- Revisao INCORRETA
+- Revisao SEM FALA
+- Transcricao corrigida
+- Observacoes
+- Filtros
+- Pesquisa
+- Navegacao anterior/proximo
+- Atalhos de teclado
+- localStorage
+- Exportacao CSV
+
+STATUS: CONCLUIDO
+============================================================
