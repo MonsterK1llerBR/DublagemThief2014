@@ -2,7 +2,7 @@
  THIEF 2014 - TRANSCRIPTION REVIEW - SCRIPT 20
 ============================================================
 
-Gerado em: 2026-09-26 00:29:53
+Gerado em: 2026-09-26 00:30:28
 
 ENTRADA
 CSV: B:\DublagemThief2014\Analysis\WEM\dubbing_transcription.csv
