@@ -215,6 +215,10 @@ foreach ($Row in $Rows) {
         $Transcript = Get-SafeString $Row.Transcript
     }
 
+    if (-not [string]::IsNullOrWhiteSpace($Transcript)) {
+        $Transcribed++
+    }
+
     $Status = Get-SafeString $Row.Status
 
     if ($Status -eq "NO_SPEECH") {
