@@ -1,719 +1,534 @@
-﻿$ErrorActionPreference = "Stop"
+﻿#requires -Version 5.1
+
+$ErrorActionPreference = "Stop"
+
+Write-Host ""
+Write-Host "===============================================" -ForegroundColor Cyan
+Write-Host " THIEF 2014 - VOICE CLASSIFICATION CATALOG"
+Write-Host " SCRIPT 16 - VERSAO CORRIGIDA"
+Write-Host "===============================================" -ForegroundColor Cyan
+Write-Host ""
+
+# ============================================================
+# CONFIGURACAO
+# ============================================================
 
 $Repo = "B:\DublagemThief2014"
+$Lab = "B:\Thief2014_Dubbing"
 
 $ReviewCsv = Join-Path $Repo "Analysis\WEM\voice_review_template.csv"
 $GraphCsv = Join-Path $Repo "Analysis\BNK\hirc_object_graph.csv"
 $TechnicalCsv = Join-Path $Repo "Analysis\WEM\wem_technical_inventory.csv"
 
-$OutputDir = "B:\Thief2014_Dubbing\Work\VoiceAudition"
+$OutputDir = Join-Path $Lab "Work\VoiceAudition"
 $OutputHtml = Join-Path $OutputDir "classification.html"
 
-Write-Host ""
-Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host " VOICE CLASSIFICATION CATALOG - SCRIPT 16"
-Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host ""
+$VoiceRoot = Join-Path $OutputDir ""
 
 # ============================================================
-# VALIDACAO
+# VALIDACAO DOS ARQUIVOS
 # ============================================================
 
-foreach ($File in @(
-    $ReviewCsv,
-    $GraphCsv,
-    $TechnicalCsv
-)) {
+Write-Host "[1/8] Validando arquivos..." -ForegroundColor Yellow
 
-    if (!(Test-Path $File)) {
-
-        throw "Arquivo nao encontrado: $File"
-
-    }
-
+if (-not (Test-Path -LiteralPath $ReviewCsv)) {
+    throw "Arquivo nao encontrado: $ReviewCsv"
 }
 
-New-Item `
-    -ItemType Directory `
-    -Force `
-    -Path $OutputDir |
-    Out-Null
-
-# ============================================================
-# LEITURA
-# ============================================================
-
-Write-Host "Carregando catalogo original..."
-
-$ReviewRows =
-    Import-Csv `
-        -Path $ReviewCsv
-
-Write-Host (
-    "Registros do catalogo original: {0}" -f
-    $ReviewRows.Count
-)
-
-Write-Host "Carregando grafo HIRC..."
-
-$GraphRows =
-    Import-Csv `
-        -Path $GraphCsv
-
-Write-Host (
-    "Registros HIRC: {0}" -f
-    $GraphRows.Count
-)
-
-Write-Host "Carregando inventario tecnico..."
-
-$TechnicalRows =
-    Import-Csv `
-        -Path $TechnicalCsv
-
-Write-Host (
-    "Registros tecnicos: {0}" -f
-    $TechnicalRows.Count
-)
-
-# ============================================================
-# FUNCAO GENERICA DE PROPRIEDADE
-# ============================================================
-
-function Get-PropertyValue {
-
-    param(
-        [Parameter(Mandatory=$true)]
-        $Object,
-
-        [Parameter(Mandatory=$true)]
-        [string[]]$Names
-    )
-
-    foreach ($Name in $Names) {
-
-        $Property =
-            $Object.PSObject.Properties |
-            Where-Object {
-                $_.Name -ieq $Name
-            } |
-            Select-Object -First 1
-
-        if ($null -ne $Property) {
-
-            $Value =
-                [string]$Property.Value
-
-            if (
-                -not [string]::IsNullOrWhiteSpace(
-                    $Value
-                )
-            ) {
-
-                return $Value
-
-            }
-
-        }
-
-    }
-
-    return ""
-
+if (-not (Test-Path -LiteralPath $GraphCsv)) {
+    throw "Arquivo nao encontrado: $GraphCsv"
 }
 
+if (-not (Test-Path -LiteralPath $TechnicalCsv)) {
+    throw "Arquivo nao encontrado: $TechnicalCsv"
+}
+
+if (-not (Test-Path -LiteralPath $OutputDir)) {
+    New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
+}
+
+Write-Host "Review CSV:     OK" -ForegroundColor Green
+Write-Host "Graph CSV:       OK" -ForegroundColor Green
+Write-Host "Technical CSV:   OK" -ForegroundColor Green
+Write-Host "Output:          $OutputHtml" -ForegroundColor Green
+Write-Host ""
+
 # ============================================================
-# INDEXAR GRAFO POR WEM
+# LEITURA DOS CSVs
 # ============================================================
+
+Write-Host "[2/8] Lendo dados..." -ForegroundColor Yellow
+
+$ReviewRows = @(Import-Csv -LiteralPath $ReviewCsv)
+$GraphRows = @(Import-Csv -LiteralPath $GraphCsv)
+$TechnicalRows = @(Import-Csv -LiteralPath $TechnicalCsv)
+
+if ($ReviewRows.Count -eq 0) {
+    throw "O voice_review_template.csv nao possui registros."
+}
+
+Write-Host "Review:          $($ReviewRows.Count) registros" -ForegroundColor Green
+Write-Host "Graph:           $($GraphRows.Count) registros" -ForegroundColor Green
+Write-Host "Technical:       $($TechnicalRows.Count) registros" -ForegroundColor Green
+Write-Host ""
+
+# ============================================================
+# INDICES
+# ============================================================
+
+Write-Host "[3/8] Criando indices..." -ForegroundColor Yellow
 
 $GraphByWem = @{}
+foreach ($item in $GraphRows) {
 
-foreach ($Row in $GraphRows) {
+    $WemName = [string]$item.WEM
 
-    $Wem =
-        Get-PropertyValue $Row @(
-            "WEM",
-            "wem",
-            "Wem"
-        )
-
-    $SourceID =
-        Get-PropertyValue $Row @(
-            "SourceID",
-            "sourceID",
-            "SourceId"
-        )
-
-    if (
-        [string]::IsNullOrWhiteSpace($Wem) -and
-        -not [string]::IsNullOrWhiteSpace($SourceID)
-    ) {
-
-        $Wem =
-            "$SourceID.wem"
-
+    if ([string]::IsNullOrWhiteSpace($WemName)) {
+        continue
     }
 
-    if (
-        -not [string]::IsNullOrWhiteSpace($Wem)
-    ) {
+    $Key = $WemName.Trim().ToLowerInvariant()
 
-        $Key =
-            [System.IO.Path]::GetFileName(
-                $Wem
-            ).ToLowerInvariant()
-
-        if (
-            -not $GraphByWem.ContainsKey($Key)
-        ) {
-
-            $GraphByWem[$Key] =
-                $Row
-
-        }
-
+    if (-not $GraphByWem.ContainsKey($Key)) {
+        $GraphByWem[$Key] = $item
     }
-
 }
-
-Write-Host (
-    "WEM indexados no grafo: {0}" -f
-    $GraphByWem.Count
-)
-
-# ============================================================
-# INDEXAR INVENTARIO TECNICO POR WEM
-# ============================================================
 
 $TechnicalByWem = @{}
+foreach ($item in $TechnicalRows) {
 
-foreach ($Row in $TechnicalRows) {
+    $WemName = [string]$item.WEM
 
-    $Wem =
-        Get-PropertyValue $Row @(
-            "WEM",
-            "wem",
-            "Wem"
-        )
-
-    if (
-        -not [string]::IsNullOrWhiteSpace($Wem)
-    ) {
-
-        $Key =
-            [System.IO.Path]::GetFileName(
-                $Wem
-            ).ToLowerInvariant()
-
-        if (
-            -not $TechnicalByWem.ContainsKey($Key)
-        ) {
-
-            $TechnicalByWem[$Key] =
-                $Row
-
-        }
-
+    if ([string]::IsNullOrWhiteSpace($WemName)) {
+        continue
     }
 
+    $Key = $WemName.Trim().ToLowerInvariant()
+
+    if (-not $TechnicalByWem.ContainsKey($Key)) {
+        $TechnicalByWem[$Key] = $item
+    }
 }
 
-Write-Host (
-    "WEM indexados tecnicamente: {0}" -f
-    $TechnicalByWem.Count
-)
+Write-Host "Graph index:     $($GraphByWem.Count)" -ForegroundColor Green
+Write-Host "Technical index: $($TechnicalByWem.Count)" -ForegroundColor Green
+Write-Host ""
 
 # ============================================================
-# MONTAR DADOS
-#
-# IMPORTANTE:
-# A ORDEM E O AUDIO VEM DO voice_review_template.csv
-#
-# O GRAFO E O INVENTARIO APENAS ENRIQUECEM OS DADOS.
+# FUNCAO PARA ESCAPAR JSON
 # ============================================================
 
-$Data =
-    New-Object System.Collections.Generic.List[object]
+function ConvertTo-SafeJsonString {
+    param(
+        [AllowNull()]
+        [string]$Value
+    )
 
-$Index = 0
+    if ($null -eq $Value) {
+        return ""
+    }
 
-foreach ($Review in $ReviewRows) {
+    return $Value
+}
 
-    $Index++
+# ============================================================
+# MONTAGEM DOS DADOS
+# ============================================================
+
+Write-Host "[4/8] Montando catalogo..." -ForegroundColor Yellow
+
+$Data = New-Object System.Collections.Generic.List[object]
+
+$Counter = 0
+$AudioCount = 0
+$EventCount = 0
+$ActionCount = 0
+$SoundCount = 0
+$SourceCount = 0
+$MissingAudio = 0
+
+foreach ($row in $ReviewRows) {
+
+    $Counter++
 
     # --------------------------------------------------------
     # WEM
     # --------------------------------------------------------
 
-    $WEM =
-        Get-PropertyValue $Review @(
-            "WEM",
-            "wem"
-        )
+    $Wem = [string]$row.WEM
+
+    if ([string]::IsNullOrWhiteSpace($Wem)) {
+        Write-Warning "Registro $Counter sem WEM. Ignorando."
+        continue
+    }
+
+    $Wem = $Wem.Trim()
 
     # --------------------------------------------------------
-    # BATCH ORIGINAL
+    # INDICE
     # --------------------------------------------------------
 
-    $Batch =
-        Get-PropertyValue $Review @(
-            "Batch",
-            "batch"
-        )
+    $IndexValue = $Counter
 
-    # --------------------------------------------------------
-    # AUDIO ORIGINAL
-    # --------------------------------------------------------
+    if ($row.Index) {
 
-    $Audio = ""
+        $ParsedIndex = 0
 
-    $OriginalWav =
-        Get-PropertyValue $Review @(
-            "WAV",
-            "wav"
-        )
-
-    if (
-        -not [string]::IsNullOrWhiteSpace(
-            $OriginalWav
-        )
-    ) {
-
-        $Root =
-            "B:\Thief2014_Dubbing\Work\VoiceAudition\"
-
-        if (
-            $OriginalWav.StartsWith(
-                $Root,
-                [System.StringComparison]::OrdinalIgnoreCase
-            )
-        ) {
-
-            $Audio =
-                $OriginalWav.Substring(
-                    $Root.Length
-                ) -replace '\\','/'
-
+        if ([int]::TryParse(
+            ([string]$row.Index).Trim(),
+            [ref]$ParsedIndex
+        )) {
+            $IndexValue = $ParsedIndex
         }
-        else {
-
-            $Audio =
-                $OriginalWav -replace '\\','/'
-
-        }
-
     }
 
     # --------------------------------------------------------
-    # FALLBACK DO AUDIO
+    # BATCH
+    #
+    # Nao usamos mais o campo Batch do CSV.
+    # O lote e reconstruido diretamente pelo indice.
+    # BatchSize = 100
     # --------------------------------------------------------
 
-    if (
-        [string]::IsNullOrWhiteSpace(
-            $Audio
-        )
-    ) {
+    $BatchNumber = [int][math]::Floor(($IndexValue - 1) / 100) + 1
 
-        if (
-            -not [string]::IsNullOrWhiteSpace(
-                $Batch
-            ) -and
-            -not [string]::IsNullOrWhiteSpace(
-                $WEM
-            )
-        ) {
+    $Batch = "Batch_{0:D3}" -f $BatchNumber
 
-            $WemBase =
-                [System.IO.Path]::GetFileNameWithoutExtension(
-                    $WEM
-                )
+    # --------------------------------------------------------
+    # WAV
+    #
+    # O WAV original do catalogo segue:
+    #
+    # Batch_001
+    #   0001_731766908.wav
+    #
+    # Portanto reconstruimos diretamente.
+    # --------------------------------------------------------
 
-            $Position =
-                $Index
+    $WavFileName = "{0:D4}_{1}.wav" -f $IndexValue, `
+        ([System.IO.Path]::GetFileNameWithoutExtension($Wem))
 
-            $PositionInBatch =
-                (($Position - 1) % 100) + 1
+    $RelativeAudio = "$Batch/$WavFileName"
 
-            $AudioFile =
-                "{0:D4}_{1}.wav" -f `
-                    $PositionInBatch,
-                    $WemBase
+    $PhysicalAudio = Join-Path `
+        (Join-Path $OutputDir $Batch) `
+        $WavFileName
 
-            $Audio =
-                "$Batch/$AudioFile"
+    # --------------------------------------------------------
+    # METADADOS HIRC
+    # --------------------------------------------------------
 
-        }
+    $GraphItem = $null
+    $GraphKey = $Wem.ToLowerInvariant()
 
+    if ($GraphByWem.ContainsKey($GraphKey)) {
+        $GraphItem = $GraphByWem[$GraphKey]
     }
 
     # --------------------------------------------------------
-    # CHAVE DO WEM
+    # METADADOS TECNICOS
     # --------------------------------------------------------
 
-    $WemKey = ""
+    $TechnicalItem = $null
 
-    if (
-        -not [string]::IsNullOrWhiteSpace(
-            $WEM
-        )
-    ) {
-
-        $WemKey =
-            [System.IO.Path]::GetFileName(
-                $WEM
-            ).ToLowerInvariant()
-
+    if ($TechnicalByWem.ContainsKey($GraphKey)) {
+        $TechnicalItem = $TechnicalByWem[$GraphKey]
     }
 
     # --------------------------------------------------------
-    # GRAFO
-    # --------------------------------------------------------
-
-    $Graph = $null
-
-    if (
-        $GraphByWem.ContainsKey(
-            $WemKey
-        )
-    ) {
-
-        $Graph =
-            $GraphByWem[$WemKey]
-
-    }
-
-    # --------------------------------------------------------
-    # METADADOS DO GRAFO
+    # EVENT ID
     # --------------------------------------------------------
 
     $EventID = ""
+
+    if ($GraphItem -and $GraphItem.EventID) {
+        $EventID = [string]$GraphItem.EventID
+    }
+    elseif ($row.EventID) {
+        $EventID = [string]$row.EventID
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace($EventID)) {
+        $EventCount++
+    }
+
+    # --------------------------------------------------------
+    # ACTION ID
+    # --------------------------------------------------------
+
     $ActionID = ""
+
+    if ($GraphItem -and $GraphItem.ActionID) {
+        $ActionID = [string]$GraphItem.ActionID
+    }
+    elseif ($row.ActionID) {
+        $ActionID = [string]$row.ActionID
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace($ActionID)) {
+        $ActionCount++
+    }
+
+    # --------------------------------------------------------
+    # SOUND ID
+    # --------------------------------------------------------
+
     $SoundID = ""
+
+    if ($GraphItem -and $GraphItem.SoundID) {
+        $SoundID = [string]$GraphItem.SoundID
+    }
+    elseif ($row.SoundID) {
+        $SoundID = [string]$row.SoundID
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace($SoundID)) {
+        $SoundCount++
+    }
+
+    # --------------------------------------------------------
+    # SOURCE ID
+    # --------------------------------------------------------
+
     $SourceID = ""
 
-    if ($null -ne $Graph) {
+    if ($GraphItem -and $GraphItem.SourceID) {
+        $SourceID = [string]$GraphItem.SourceID
+    }
+    elseif ($row.SourceID) {
+        $SourceID = [string]$row.SourceID
+    }
+    else {
+        $SourceID = [System.IO.Path]::GetFileNameWithoutExtension($Wem)
+    }
 
-        $EventID =
-            Get-PropertyValue $Graph @(
-                "EventID",
-                "eventID",
-                "EventId"
-            )
-
-        $ActionID =
-            Get-PropertyValue $Graph @(
-                "ActionID",
-                "actionID",
-                "ActionId"
-            )
-
-        $SoundID =
-            Get-PropertyValue $Graph @(
-                "SoundID",
-                "soundID",
-                "SoundId"
-            )
-
-        $SourceID =
-            Get-PropertyValue $Graph @(
-                "SourceID",
-                "sourceID",
-                "SourceId"
-            )
-
+    if (-not [string]::IsNullOrWhiteSpace($SourceID)) {
+        $SourceCount++
     }
 
     # --------------------------------------------------------
-    # FALLBACK PARA CAMPOS DO REVIEW
+    # DURACAO
     # --------------------------------------------------------
-
-    if ([string]::IsNullOrWhiteSpace($EventID)) {
-
-        $EventID =
-            Get-PropertyValue $Review @(
-                "EventID",
-                "eventID"
-            )
-
-    }
-
-    if ([string]::IsNullOrWhiteSpace($ActionID)) {
-
-        $ActionID =
-            Get-PropertyValue $Review @(
-                "ActionID",
-                "actionID"
-            )
-
-    }
-
-    if ([string]::IsNullOrWhiteSpace($SoundID)) {
-
-        $SoundID =
-            Get-PropertyValue $Review @(
-                "SoundID",
-                "soundID"
-            )
-
-    }
-
-    if ([string]::IsNullOrWhiteSpace($SourceID)) {
-
-        $SourceID =
-            Get-PropertyValue $Review @(
-                "SourceID",
-                "sourceID"
-            )
-
-    }
-
-    # --------------------------------------------------------
-    # INVENTARIO TECNICO
-    # --------------------------------------------------------
-
-    $Technical = $null
-
-    if (
-        $TechnicalByWem.ContainsKey(
-            $WemKey
-        )
-    ) {
-
-        $Technical =
-            $TechnicalByWem[$WemKey]
-
-    }
 
     $Duration = ""
+
+    if ($TechnicalItem -and $TechnicalItem.DurationSec) {
+        $Duration = [string]$TechnicalItem.DurationSec
+    }
+    elseif ($row.DurationSec) {
+        $Duration = [string]$row.DurationSec
+    }
+    elseif ($row.Duration) {
+        $Duration = [string]$row.Duration
+    }
+
+    # --------------------------------------------------------
+    # BITRATE
+    # --------------------------------------------------------
+
     $Bitrate = ""
+
+    if ($TechnicalItem -and $TechnicalItem.Bitrate) {
+        $Bitrate = [string]$TechnicalItem.Bitrate
+    }
+    elseif ($row.BitrateKbps) {
+        $Bitrate = [string]$row.BitrateKbps
+    }
+    elseif ($row.Bitrate) {
+        $Bitrate = [string]$row.Bitrate
+    }
+
+    if (
+        -not [string]::IsNullOrWhiteSpace($Bitrate) -and
+        $Bitrate -notmatch "kbps"
+    ) {
+        $Bitrate = "$Bitrate kbps"
+    }
+
+    # --------------------------------------------------------
+    # ENCODING
+    # --------------------------------------------------------
+
     $Encoding = ""
+
+    if ($TechnicalItem -and $TechnicalItem.Encoding) {
+        $Encoding = [string]$TechnicalItem.Encoding
+    }
+    elseif ($row.Encoding) {
+        $Encoding = [string]$row.Encoding
+    }
+
+    # --------------------------------------------------------
+    # SAMPLE RATE
+    # --------------------------------------------------------
+
     $SampleRate = ""
+
+    if ($TechnicalItem -and $TechnicalItem.SampleRate) {
+        $SampleRate = [string]$TechnicalItem.SampleRate
+    }
+    elseif ($row.SampleRate) {
+        $SampleRate = [string]$row.SampleRate
+    }
+
+    if (
+        -not [string]::IsNullOrWhiteSpace($SampleRate) -and
+        $SampleRate -notmatch "Hz"
+    ) {
+        $SampleRate = "$SampleRate Hz"
+    }
+
+    # --------------------------------------------------------
+    # CHANNELS
+    # --------------------------------------------------------
+
     $Channels = ""
 
-    if ($null -ne $Technical) {
-
-        $Duration =
-            Get-PropertyValue $Technical @(
-                "DurationSec",
-                "duration",
-                "Duration"
-            )
-
-        $Bitrate =
-            Get-PropertyValue $Technical @(
-                "BitrateKbps",
-                "bitrate",
-                "Bitrate"
-            )
-
-        $Encoding =
-            Get-PropertyValue $Technical @(
-                "Encoding",
-                "encoding"
-            )
-
-        $SampleRate =
-            Get-PropertyValue $Technical @(
-                "SampleRate",
-                "sampleRate"
-            )
-
-        $Channels =
-            Get-PropertyValue $Technical @(
-                "Channels",
-                "channels"
-            )
-
+    if ($TechnicalItem -and $TechnicalItem.Channels) {
+        $Channels = [string]$TechnicalItem.Channels
+    }
+    elseif ($row.Channels) {
+        $Channels = [string]$row.Channels
     }
 
     # --------------------------------------------------------
-    # FALLBACK TECNICO
+    # VERIFICACAO FISICA
     # --------------------------------------------------------
 
-    if ([string]::IsNullOrWhiteSpace($Duration)) {
+    $Status = "AUDIO_MISSING"
 
-        $Duration =
-            Get-PropertyValue $Review @(
-                "DurationSec",
-                "duration"
-            )
-
+    if (Test-Path -LiteralPath $PhysicalAudio) {
+        $AudioCount++
+        $Status = "READY"
     }
-
-    if ([string]::IsNullOrWhiteSpace($Bitrate)) {
-
-        $Bitrate =
-            Get-PropertyValue $Review @(
-                "BitrateKbps",
-                "bitrate"
-            )
-
-    }
-
-    if ([string]::IsNullOrWhiteSpace($Encoding)) {
-
-        $Encoding =
-            Get-PropertyValue $Review @(
-                "Encoding",
-                "encoding"
-            )
-
-    }
-
-    if ([string]::IsNullOrWhiteSpace($SampleRate)) {
-
-        $SampleRate =
-            Get-PropertyValue $Review @(
-                "SampleRate",
-                "sampleRate"
-            )
-
-    }
-
-    if ([string]::IsNullOrWhiteSpace($Channels)) {
-
-        $Channels =
-            Get-PropertyValue $Review @(
-                "Channels",
-                "channels"
-            )
-
+    else {
+        $MissingAudio++
     }
 
     # --------------------------------------------------------
-    # REGISTRO FINAL
+    # OBJETO
     # --------------------------------------------------------
 
-    $Data.Add(
-        [PSCustomObject]@{
+    $Object = [ordered]@{
+        index      = [string]$IndexValue
+        batch      = $Batch
+        wem        = $Wem
+        audio      = $RelativeAudio
+        eventID    = $EventID
+        actionID   = $ActionID
+        soundID    = $SoundID
+        sourceID   = $SourceID
+        duration   = $Duration
+        bitrate    = $Bitrate
+        encoding   = $Encoding
+        sampleRate = $SampleRate
+        channels   = $Channels
+        status     = $Status
+    }
 
-            index      = [string]$Index
-
-            batch      = $Batch
-
-            wem        = $WEM
-
-            audio      = $Audio
-
-            eventID    = $EventID
-            actionID   = $ActionID
-            soundID    = $SoundID
-            sourceID   = $SourceID
-
-            duration   = $Duration
-            bitrate    = $Bitrate
-            encoding   = $Encoding
-            sampleRate = $SampleRate
-            channels   = $Channels
-
-        }
-    )
-
+    $Data.Add($Object)
 }
 
+Write-Host "Registros:       $($Data.Count)" -ForegroundColor Green
+Write-Host "Audios validos:  $AudioCount" -ForegroundColor Green
+Write-Host "Audios ausentes: $MissingAudio" -ForegroundColor $(if ($MissingAudio -eq 0) { "Green" } else { "Yellow" })
+Write-Host "EventID:         $EventCount" -ForegroundColor Green
+Write-Host "ActionID:        $ActionCount" -ForegroundColor Green
+Write-Host "SoundID:         $SoundCount" -ForegroundColor Green
+Write-Host "SourceID:        $SourceCount" -ForegroundColor Green
+Write-Host ""
+
 # ============================================================
-# VALIDACAO
+# VALIDACAO DO PRIMEIRO REGISTRO
 # ============================================================
 
-$Total =
-    $Data.Count
+Write-Host "[5/8] Validando primeiro registro..." -ForegroundColor Yellow
 
-$AudioCount =
-    @(
-        $Data |
-        Where-Object {
-            -not [string]::IsNullOrWhiteSpace(
-                $_.audio
-            )
-        }
-    ).Count
+if ($Data.Count -eq 0) {
+    throw "Nenhum registro foi criado."
+}
 
-$EventCount =
-    @(
-        $Data |
-        Where-Object {
-            -not [string]::IsNullOrWhiteSpace(
-                $_.eventID
-            )
-        }
-    ).Count
-
-$ActionCount =
-    @(
-        $Data |
-        Where-Object {
-            -not [string]::IsNullOrWhiteSpace(
-                $_.actionID
-            )
-        }
-    ).Count
-
-$SoundCount =
-    @(
-        $Data |
-        Where-Object {
-            -not [string]::IsNullOrWhiteSpace(
-                $_.soundID
-            )
-        }
-    ).Count
-
-$SourceCount =
-    @(
-        $Data |
-        Where-Object {
-            -not [string]::IsNullOrWhiteSpace(
-                $_.sourceID
-            )
-        }
-    ).Count
+$First = $Data[0]
 
 Write-Host ""
-Write-Host "============================================================" -ForegroundColor Green
-Write-Host " VALIDACAO"
-Write-Host "============================================================" -ForegroundColor Green
+Write-Host "Primeiro registro:" -ForegroundColor Cyan
+Write-Host "  Index:      $($First.index)"
+Write-Host "  Batch:      $($First.batch)"
+Write-Host "  WEM:        $($First.wem)"
+Write-Host "  Audio:      $($First.audio)"
+Write-Host "  EventID:    $($First.eventID)"
+Write-Host "  ActionID:   $($First.actionID)"
+Write-Host "  SoundID:    $($First.soundID)"
+Write-Host "  SourceID:   $($First.sourceID)"
+Write-Host "  Duration:   $($First.duration)"
+Write-Host "  Bitrate:    $($First.bitrate)"
+Write-Host "  Encoding:   $($First.encoding)"
+Write-Host "  SampleRate: $($First.sampleRate)"
+Write-Host "  Channels:   $($First.channels)"
+Write-Host "  Status:     $($First.status)"
+Write-Host ""
 
-Write-Host ("Total:          {0}" -f $Total)
-Write-Host ("Audios:         {0}" -f $AudioCount)
-Write-Host ("EventID:        {0}" -f $EventCount)
-Write-Host ("ActionID:       {0}" -f $ActionCount)
-Write-Host ("SoundID:        {0}" -f $SoundCount)
-Write-Host ("SourceID:       {0}" -f $SourceCount)
-
-if ($Total -gt 0) {
-
-    Write-Host ""
-    Write-Host "PRIMEIRO REGISTRO:" -ForegroundColor Yellow
-
-    $Data[0] |
-        Format-List
-
+if ([string]::IsNullOrWhiteSpace($First.audio)) {
+    throw "ERRO: o primeiro registro possui audio vazio."
 }
+
+if ([string]::IsNullOrWhiteSpace($First.batch)) {
+    throw "ERRO: o primeiro registro possui batch vazio."
+}
+
+$FirstPhysical = Join-Path $OutputDir `
+    ($First.audio -replace "/", "\")
+
+Write-Host "Arquivo fisico esperado:" -ForegroundColor Cyan
+Write-Host "  $FirstPhysical"
+
+if (Test-Path -LiteralPath $FirstPhysical) {
+    Write-Host "  ARQUIVO EXISTE: SIM" -ForegroundColor Green
+}
+else {
+    Write-Warning "ARQUIVO EXISTE: NAO"
+}
+
+Write-Host ""
 
 # ============================================================
 # JSON
 # ============================================================
 
-$Json =
-    $Data |
-    ConvertTo-Json `
-        -Compress `
-        -Depth 5
+Write-Host "[6/8] Gerando JSON..." -ForegroundColor Yellow
+
+$Json = $Data | ConvertTo-Json -Depth 10 -Compress
+
+if ([string]::IsNullOrWhiteSpace($Json)) {
+    throw "Falha ao gerar JSON."
+}
+
+if ($Json -notmatch "Batch_001") {
+    throw "ERRO CRITICO: JSON nao contem Batch_001."
+}
+
+if ($Json -notmatch "0001_731766908\.wav") {
+    throw "ERRO CRITICO: JSON nao contem o primeiro WAV esperado."
+}
+
+Write-Host "JSON gerado." -ForegroundColor Green
+Write-Host "Tamanho: $($Json.Length) caracteres" -ForegroundColor Green
+Write-Host ""
 
 # ============================================================
 # HTML
 # ============================================================
 
+Write-Host "[7/8] Gerando HTML..." -ForegroundColor Yellow
+
 $Html = @"
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thief 2014 - Classificação de Voz</title>
+<title>Thief 2014 - Voice Classification</title>
 
 <style>
 
@@ -723,6 +538,7 @@ $Html = @"
 
 body {
     margin: 0;
+    padding: 0;
     background: #111;
     color: #eee;
     font-family: Arial, Helvetica, sans-serif;
@@ -731,12 +547,12 @@ body {
 header {
     position: sticky;
     top: 0;
-    z-index: 20;
-
-    padding: 14px 18px;
+    z-index: 1000;
 
     background: #181818;
     border-bottom: 1px solid #333;
+
+    padding: 15px 20px;
 }
 
 h1 {
@@ -744,195 +560,167 @@ h1 {
     font-size: 22px;
 }
 
-.toolbar {
+#toolbar {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
 }
 
-button,
-select,
-input {
-    background: #222;
-    color: #eee;
-    border: 1px solid #444;
-    border-radius: 5px;
-    padding: 7px 10px;
-}
-
 button {
     cursor: pointer;
+    pointer-events: auto;
+
+    border: 1px solid #555;
+    border-radius: 5px;
+
+    background: #2a2a2a;
+    color: #fff;
+
+    padding: 7px 11px;
+    font-size: 13px;
 }
 
 button:hover {
-    background: #333;
+    background: #3a3a3a;
 }
 
-.counter {
-    margin-left: auto;
-    font-weight: bold;
+button.active {
+    background: #555;
 }
 
-#search {
-    width: 280px;
+button.class-speech.active {
+    background: #2e7d32;
 }
 
-main {
-    padding: 18px;
+button.class-shout.active {
+    background: #b71c1c;
+}
+
+button.class-vocal.active {
+    background: #6a1b9a;
+}
+
+button.class-effect.active {
+    background: #1565c0;
+}
+
+button.class-discard.active {
+    background: #424242;
+}
+
+#counter {
+    margin-left: 10px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+#app {
+    padding: 20px;
 }
 
 .card {
-    background: #191919;
     border: 1px solid #333;
     border-radius: 8px;
-    margin-bottom: 12px;
-    overflow: hidden;
-}
 
-.card.pending {
-    border-left: 4px solid #777;
-}
+    background: #181818;
 
-.card.done {
-    border-left: 4px solid #4caf50;
-}
-
-.card-header {
-    padding: 10px 14px;
-    background: #202020;
-
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.title {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.meta {
-    color: #aaa;
-    font-size: 12px;
-    margin-top: 4px;
-}
-
-.status {
-    font-weight: bold;
-}
-
-.card-body {
+    margin-bottom: 14px;
     padding: 14px;
 }
 
-audio {
-    width: 100%;
-    margin-bottom: 12px;
+.card.selected {
+    border-color: #777;
 }
 
-.classification {
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.card-meta {
+    color: #999;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+audio {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.classification-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 12px;
+    margin-top: 10px;
 }
 
-.classification button.active {
-    outline: 2px solid #fff;
-}
-
-.fields {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 8px;
-}
-
-.fields label {
-    color: #aaa;
-    padding-top: 7px;
-}
-
-.fields input,
-.fields textarea {
+textarea,
+input {
     width: 100%;
 
-    background: #111;
+    background: #101010;
     color: #eee;
 
     border: 1px solid #444;
     border-radius: 5px;
 
     padding: 8px;
+
+    margin-top: 7px;
 }
 
-.fields textarea {
-    min-height: 70px;
+textarea {
+    min-height: 55px;
     resize: vertical;
 }
 
-.nav {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
+.status {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #888;
 }
 
-.small {
-    color: #888;
-    font-size: 11px;
-    margin-top: 12px;
+.status.ready {
+    color: #81c784;
+}
+
+.status.missing {
+    color: #e57373;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
 
-<h1>Thief 2014 - Classificação de Voz</h1>
+<h1>Thief 2014 - Voice Classification</h1>
 
-<div class="toolbar">
+<div id="toolbar">
 
-<button onclick="previousItem()">⏮ Anterior</button>
+<button id="prevButton">◀ Anterior</button>
+<button id="nextButton">Próximo ▶</button>
 
-<button onclick="nextItem()">Próximo ⏭</button>
+<button id="filterPending">Pendentes</button>
+<button id="filterAll">Todos</button>
 
-<select id="filter" onchange="render()">
+<button id="exportButton">Exportar CSV</button>
+<button id="clearButton">Limpar classificações</button>
 
-<option value="ALL">Todos</option>
-<option value="PENDING">Pendentes</option>
-<option value="FALA">Fala</option>
-<option value="GRITO">Grito</option>
-<option value="VOCALIZACAO">Vocalização</option>
-<option value="EFEITO">Efeito</option>
-<option value="DESCARTAR">Descartar</option>
+<span id="counter"></span>
 
-</select>
-
-<input
-    id="search"
-    placeholder="Buscar WEM / EventID / personagem..."
-    oninput="render()"
-/>
-
-<button onclick="exportCSV()">
-Exportar CSV
-</button>
-
-<button onclick="clearAll()">
-Limpar classificação
-</button>
-
-<div class="counter" id="counter"></div>
-
-</div>
-
-<div class="small">
-← anterior · → próximo ·
-1 FALA · 2 GRITO · 3 VOCALIZAÇÃO ·
-4 EFEITO · 5 DESCARTAR
 </div>
 
 </header>
@@ -943,612 +731,413 @@ Limpar classificação
 
 const DATA = $Json;
 
-const STORAGE_KEY =
-    "thief2014_voice_classification_v3";
+const STORAGE_KEY = "thief2014_voice_classification_v4";
 
-let review =
-    JSON.parse(
-        localStorage.getItem(
-            STORAGE_KEY
-        ) || "{}"
-    );
+let state = {
+    current: 0,
+    filter: "all",
+    classifications: {}
+};
 
-let visibleRows = [];
+try {
 
-let currentPosition = 0;
+    const saved = localStorage.getItem(STORAGE_KEY);
 
-function getReview(index) {
+    if (saved) {
+        state.classifications = JSON.parse(saved);
+    }
 
-    if (!review[index]) {
+} catch (error) {
 
-        review[index] = {
+    console.error("Erro ao carregar localStorage:", error);
 
-            classification: "PENDENTE",
-            character: "",
-            transcript: "",
-            notes: ""
+}
 
-        };
+function saveState() {
+
+    try {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(state.classifications)
+        );
+
+    } catch (error) {
+
+        console.error("Erro ao salvar classificacoes:", error);
 
     }
 
-    return review[index];
+}
+
+function getClassification(index) {
+
+    return state.classifications[index] || {
+        classification: "PENDENTE",
+        character: "",
+        transcript: "",
+        notes: ""
+    };
 
 }
 
-function save() {
+function setClassification(index, classification) {
 
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(review)
-    );
+    const current = getClassification(index);
 
-}
+    current.classification = classification;
 
-function classify(index, value) {
+    state.classifications[index] = current;
 
-    const r =
-        getReview(index);
-
-    r.classification =
-        value;
-
-    save();
+    saveState();
 
     render();
 
 }
 
-function updateField(
-    index,
-    field,
-    value
-) {
+function updateField(index, field, value) {
 
-    const r =
-        getReview(index);
+    const current = getClassification(index);
 
-    r[field] =
-        value;
+    current[field] = value;
 
-    save();
+    state.classifications[index] = current;
+
+    saveState();
 
 }
 
-function matchesSearch(row) {
+function filteredData() {
 
-    const query =
-        document
-            .getElementById("search")
-            .value
-            .trim()
-            .toLowerCase();
+    if (state.filter === "pending") {
 
-    if (!query) {
-        return true;
+        return DATA.filter(function(row) {
+
+            const item = getClassification(row.index);
+
+            return item.classification === "PENDENTE";
+
+        });
+
     }
 
-    const r =
-        getReview(row.index);
-
-    const text = [
-
-        row.wem,
-        row.eventID,
-        row.actionID,
-        row.soundID,
-        row.sourceID,
-
-        r.character,
-        r.transcript,
-        r.notes
-
-    ].join(" ").toLowerCase();
-
-    return text.includes(query);
+    return DATA;
 
 }
 
-function matchesFilter(row) {
+function escapeHtml(value) {
 
-    const filter =
-        document
-            .getElementById("filter")
-            .value;
-
-    if (filter === "ALL") {
-        return true;
+    if (value === null || value === undefined) {
+        return "";
     }
 
-    const r =
-        getReview(row.index);
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-    if (filter === "PENDING") {
+}
 
-        return (
-            r.classification ===
-            "PENDENTE"
+function createButton(row, label, className) {
+
+    const button = document.createElement("button");
+
+    button.textContent = label;
+
+    button.className = className || "";
+
+    button.type = "button";
+
+    button.addEventListener("click", function(event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        setClassification(
+            row.index,
+            label.toUpperCase()
         );
 
+    });
+
+    return button;
+
+}
+
+function createCard(row) {
+
+    const card = document.createElement("section");
+
+    card.className = "card";
+
+    const classification = getClassification(row.index);
+
+    if (classification.classification !== "PENDENTE") {
+        card.classList.add("selected");
     }
 
-    return (
-        r.classification ===
-        filter
+    const header = document.createElement("div");
+
+    header.className = "card-header";
+
+    const title = document.createElement("div");
+
+    title.className = "card-title";
+
+    title.textContent =
+        "#" + row.index +
+        " | " +
+        row.wem;
+
+    const meta = document.createElement("div");
+
+    meta.className = "card-meta";
+
+    meta.innerHTML =
+        "Batch: " + escapeHtml(row.batch) +
+        "<br>" +
+        "EventID: " + escapeHtml(row.eventID) +
+        "<br>" +
+        "ActionID: " + escapeHtml(row.actionID) +
+        "<br>" +
+        "SoundID: " + escapeHtml(row.soundID) +
+        "<br>" +
+        "SourceID: " + escapeHtml(row.sourceID) +
+        "<br>" +
+        "Duration: " + escapeHtml(row.duration) +
+        "<br>" +
+        "Bitrate: " + escapeHtml(row.bitrate) +
+        "<br>" +
+        "Encoding: " + escapeHtml(row.encoding) +
+        "<br>" +
+        "Sample Rate: " + escapeHtml(row.sampleRate) +
+        "<br>" +
+        "Channels: " + escapeHtml(row.channels);
+
+    header.appendChild(title);
+    header.appendChild(meta);
+
+    card.appendChild(header);
+
+    const audio = document.createElement("audio");
+
+    audio.controls = true;
+    audio.preload = "none";
+
+    /*
+        IMPORTANTE:
+        O caminho vem diretamente do JSON gerado pelo PowerShell.
+
+        Exemplo:
+        Batch_001/0001_731766908.wav
+    */
+
+    audio.src = String(row.audio || "").replace(/\\/g, "/");
+
+    card.appendChild(audio);
+
+    const status = document.createElement("div");
+
+    status.className = "status";
+
+    if (row.status === "READY") {
+
+        status.classList.add("ready");
+
+        status.textContent =
+            "Áudio pronto: " + row.audio;
+
+    } else {
+
+        status.classList.add("missing");
+
+        status.textContent =
+            "Áudio não encontrado: " + row.audio;
+
+    }
+
+    card.appendChild(status);
+
+    const buttons = document.createElement("div");
+
+    buttons.className = "classification-buttons";
+
+    const speech = createButton(
+        row,
+        "FALA",
+        "class-speech"
     );
+
+    const shout = createButton(
+        row,
+        "GRITO",
+        "class-shout"
+    );
+
+    const vocal = createButton(
+        row,
+        "VOCALIZAÇÃO",
+        "class-vocal"
+    );
+
+    const effect = createButton(
+        row,
+        "EFEITO",
+        "class-effect"
+    );
+
+    const discard = createButton(
+        row,
+        "DESCARTAR",
+        "class-discard"
+    );
+
+    buttons.appendChild(speech);
+    buttons.appendChild(shout);
+    buttons.appendChild(vocal);
+    buttons.appendChild(effect);
+    buttons.appendChild(discard);
+
+    card.appendChild(buttons);
+
+    const character = document.createElement("input");
+
+    character.type = "text";
+
+    character.placeholder = "Personagem";
+
+    character.value = classification.character || "";
+
+    character.addEventListener("input", function() {
+
+        updateField(
+            row.index,
+            "character",
+            character.value
+        );
+
+    });
+
+    card.appendChild(character);
+
+    const transcript = document.createElement("textarea");
+
+    transcript.placeholder =
+        "Transcrição / texto original";
+
+    transcript.value =
+        classification.transcript || "";
+
+    transcript.addEventListener("input", function() {
+
+        updateField(
+            row.index,
+            "transcript",
+            transcript.value
+        );
+
+    });
+
+    card.appendChild(transcript);
+
+    const notes = document.createElement("textarea");
+
+    notes.placeholder =
+        "Observações";
+
+    notes.value =
+        classification.notes || "";
+
+    notes.addEventListener("input", function() {
+
+        updateField(
+            row.index,
+            "notes",
+            notes.value
+        );
+
+    });
+
+    card.appendChild(notes);
+
+    return card;
 
 }
 
 function render() {
 
-    const app =
-        document.getElementById(
-            "app"
-        );
-
-    visibleRows =
-        DATA.filter(
-            row =>
-                matchesFilter(row) &&
-                matchesSearch(row)
-        );
-
-    if (
-        currentPosition >=
-        visibleRows.length
-    ) {
-
-        currentPosition =
-            Math.max(
-                0,
-                visibleRows.length - 1
-            );
-
-    }
+    const app = document.getElementById("app");
 
     app.innerHTML = "";
 
-    visibleRows.forEach(
-        row => {
+    const rows = filteredData();
 
-            const r =
-                getReview(
-                    row.index
-                );
+    rows.forEach(function(row) {
 
-            const card =
-                document.createElement(
-                    "section"
-                );
+        app.appendChild(
+            createCard(row)
+        );
 
-            card.className =
-                "card " +
-                (
-                    r.classification ===
-                    "PENDENTE"
-                        ? "pending"
-                        : "done"
-                );
+    });
 
-            const header =
-                document.createElement(
-                    "div"
-                );
+    const classified = Object.values(
+        state.classifications
+    ).filter(function(item) {
 
-            header.className =
-                "card-header";
+        return item.classification &&
+            item.classification !== "PENDENTE";
 
-            const titleBlock =
-                document.createElement(
-                    "div"
-                );
+    }).length;
 
-            const title =
-                document.createElement(
-                    "div"
-                );
-
-            title.className =
-                "title";
-
-            title.textContent =
-                "#" +
-                row.index +
-                " · " +
-                row.wem;
-
-            const meta =
-                document.createElement(
-                    "div"
-                );
-
-            meta.className =
-                "meta";
-
-            meta.textContent =
-                "Event " +
-                row.eventID +
-                " · Action " +
-                row.actionID +
-                " · Sound " +
-                row.soundID +
-                " · Source " +
-                row.sourceID +
-                " · " +
-                row.duration +
-                "s · " +
-                row.bitrate +
-                " kbps";
-
-            titleBlock.appendChild(title);
-            titleBlock.appendChild(meta);
-
-            const status =
-                document.createElement(
-                    "div"
-                );
-
-            status.className =
-                "status";
-
-            status.textContent =
-                r.classification;
-
-            header.appendChild(titleBlock);
-            header.appendChild(status);
-
-            const body =
-                document.createElement(
-                    "div"
-                );
-
-            body.className =
-                "card-body";
-
-            const audio =
-                document.createElement(
-                    "audio"
-                );
-
-            audio.controls = true;
-            audio.preload = "none";
-
-            /*
-             * O caminho vem diretamente do
-             * voice_review_template.csv.
-             *
-             * Portanto ele corresponde exatamente
-             * aos WAVs gerados pelo Script 14.
-             */
-
-            audio.src =
-                row.audio.replace(
-                    /\\/g,
-                    "/"
-                );
-
-            body.appendChild(audio);
-
-            const classification =
-                document.createElement(
-                    "div"
-                );
-
-            classification.className =
-                "classification";
-
-            const types = [
-
-                ["1", "FALA"],
-                ["2", "GRITO"],
-                ["3", "VOCALIZACAO"],
-                ["4", "EFEITO"],
-                ["5", "DESCARTAR"]
-
-            ];
-
-            types.forEach(
-                item => {
-
-                    const button =
-                        document.createElement(
-                            "button"
-                        );
-
-                    button.textContent =
-                        item[0] +
-                        " · " +
-                        item[1];
-
-                    if (
-                        r.classification ===
-                        item[1]
-                    ) {
-
-                        button.classList.add(
-                            "active"
-                        );
-
-                    }
-
-                    button.onclick =
-                        () =>
-                            classify(
-                                row.index,
-                                item[1]
-                            );
-
-                    classification.appendChild(
-                        button
-                    );
-
-                }
-            );
-
-            body.appendChild(
-                classification
-            );
-
-            const fields =
-                document.createElement(
-                    "div"
-                );
-
-            fields.className =
-                "fields";
-
-            const characterLabel =
-                document.createElement(
-                    "label"
-                );
-
-            characterLabel.textContent =
-                "Personagem";
-
-            const character =
-                document.createElement(
-                    "input"
-                );
-
-            character.value =
-                r.character;
-
-            character.placeholder =
-                "Ex.: Garrett";
-
-            character.oninput =
-                event =>
-                    updateField(
-                        row.index,
-                        "character",
-                        event.target.value
-                    );
-
-            fields.appendChild(
-                characterLabel
-            );
-
-            fields.appendChild(
-                character
-            );
-
-            const transcriptLabel =
-                document.createElement(
-                    "label"
-                );
-
-            transcriptLabel.textContent =
-                "Transcrição";
-
-            const transcript =
-                document.createElement(
-                    "textarea"
-                );
-
-            transcript.value =
-                r.transcript;
-
-            transcript.placeholder =
-                "Texto original da fala...";
-
-            transcript.oninput =
-                event =>
-                    updateField(
-                        row.index,
-                        "transcript",
-                        event.target.value
-                    );
-
-            fields.appendChild(
-                transcriptLabel
-            );
-
-            fields.appendChild(
-                transcript
-            );
-
-            const notesLabel =
-                document.createElement(
-                    "label"
-                );
-
-            notesLabel.textContent =
-                "Observações";
-
-            const notes =
-                document.createElement(
-                    "textarea"
-                );
-
-            notes.value =
-                r.notes;
-
-            notes.placeholder =
-                "Contexto, emoção, intenção, ruído, etc.";
-
-            notes.oninput =
-                event =>
-                    updateField(
-                        row.index,
-                        "notes",
-                        event.target.value
-                    );
-
-            fields.appendChild(
-                notesLabel
-            );
-
-            fields.appendChild(
-                notes
-            );
-
-            body.appendChild(fields);
-
-            const nav =
-                document.createElement(
-                    "div"
-                );
-
-            nav.className =
-                "nav";
-
-            const prev =
-                document.createElement(
-                    "button"
-                );
-
-            prev.textContent =
-                "⏮ Anterior";
-
-            prev.onclick =
-                previousItem;
-
-            const next =
-                document.createElement(
-                    "button"
-                );
-
-            next.textContent =
-                "Próximo ⏭";
-
-            next.onclick =
-                nextItem;
-
-            nav.appendChild(prev);
-            nav.appendChild(next);
-
-            body.appendChild(nav);
-
-            card.appendChild(header);
-            card.appendChild(body);
-
-            app.appendChild(card);
-
-        }
-    );
-
-    updateCounter();
-
-}
-
-function updateCounter() {
-
-    const total =
-        DATA.length;
-
-    let classified = 0;
-
-    DATA.forEach(
-        row => {
-
-            if (
-                getReview(row.index)
-                    .classification !==
-                "PENDENTE"
-            ) {
-
-                classified++;
-
-            }
-
-        }
-    );
-
-    document.getElementById(
-        "counter"
-    ).textContent =
+    document.getElementById("counter").textContent =
+        "Registros: " +
+        DATA.length +
+        " | Classificados: " +
         classified +
-        " / " +
-        total +
-        " classificados";
+        " | Exibindo: " +
+        rows.length;
 
 }
 
-function nextItem() {
+function nextPending() {
 
-    if (
-        visibleRows.length === 0
-    ) {
+    const rows = filteredData();
+
+    if (rows.length === 0) {
         return;
     }
 
-    if (
-        currentPosition <
-        visibleRows.length - 1
-    ) {
+    const cards =
+        document.querySelectorAll(".card");
 
-        currentPosition++;
-
-    }
-    else {
-
-        currentPosition = 0;
-
-    }
-
-    render();
-
-}
-
-function previousItem() {
-
-    if (
-        visibleRows.length === 0
-    ) {
+    if (cards.length === 0) {
         return;
     }
 
-    if (
-        currentPosition > 0
-    ) {
-
-        currentPosition--;
-
-    }
-    else {
-
-        currentPosition =
-            visibleRows.length - 1;
-
-    }
-
-    render();
+    cards[0].scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
 
 }
 
 function exportCSV() {
 
-    const headers = [
+    const lines = [];
 
+    lines.push([
         "Index",
         "Batch",
         "WEM",
+        "Audio",
         "EventID",
         "ActionID",
         "SoundID",
         "SourceID",
-        "DurationSec",
-        "BitrateKbps",
+        "Duration",
+        "Bitrate",
         "Encoding",
         "SampleRate",
         "Channels",
@@ -1556,77 +1145,54 @@ function exportCSV() {
         "Character",
         "Transcript",
         "Notes"
+    ].join(","));
 
-    ];
+    DATA.forEach(function(row) {
 
-    const lines =
-        [headers];
+        const item =
+            getClassification(row.index);
 
-    DATA.forEach(
-        row => {
+        const values = [
+            row.index,
+            row.batch,
+            row.wem,
+            row.audio,
+            row.eventID,
+            row.actionID,
+            row.soundID,
+            row.sourceID,
+            row.duration,
+            row.bitrate,
+            row.encoding,
+            row.sampleRate,
+            row.channels,
+            item.classification,
+            item.character,
+            item.transcript,
+            item.notes
+        ];
 
-            const r =
-                getReview(row.index);
+        const escaped = values.map(function(value) {
 
-            lines.push([
+            return '"' +
+                String(value ?? "")
+                    .replace(/"/g, '""') +
+                '"';
 
-                row.index,
-                row.batch,
-                row.wem,
+        });
 
-                row.eventID,
-                row.actionID,
-                row.soundID,
-                row.sourceID,
+        lines.push(
+            escaped.join(",")
+        );
 
-                row.duration,
-                row.bitrate,
-                row.encoding,
-                row.sampleRate,
-                row.channels,
+    });
 
-                r.classification,
-                r.character,
-                r.transcript,
-                r.notes
-
-            ]);
-
+    const blob = new Blob(
+        [lines.join("\\r\\n")],
+        {
+            type: "text/csv;charset=utf-8"
         }
     );
-
-    const csv =
-        lines
-            .map(
-                row =>
-                    row
-                        .map(
-                            value =>
-                                '"' +
-                                String(
-                                    value ?? ""
-                                )
-                                .replace(
-                                    /"/g,
-                                    '""'
-                                ) +
-                                '"'
-                        )
-                        .join(",")
-            )
-            .join("\r\n");
-
-    const blob =
-        new Blob(
-            [
-                "\ufeff" +
-                csv
-            ],
-            {
-                type:
-                    "text/csv;charset=utf-8;"
-            }
-        );
 
     const url =
         URL.createObjectURL(blob);
@@ -1639,90 +1205,175 @@ function exportCSV() {
     a.download =
         "thief2014_voice_classification.csv";
 
+    document.body.appendChild(a);
+
     a.click();
+
+    a.remove();
 
     URL.revokeObjectURL(url);
 
 }
 
-function clearAll() {
+document
+    .getElementById("filterPending")
+    .addEventListener("click", function() {
 
-    if (
-        !confirm(
-            "Isso apagará todas as classificações, personagens, transcrições e observações deste navegador. Continuar?"
-        )
-    ) {
+        state.filter = "pending";
 
-        return;
+        render();
 
-    }
+    });
 
-    review = {};
+document
+    .getElementById("filterAll")
+    .addEventListener("click", function() {
 
-    save();
+        state.filter = "all";
 
-    render();
+        render();
 
-}
+    });
+
+document
+    .getElementById("exportButton")
+    .addEventListener("click", function() {
+
+        exportCSV();
+
+    });
+
+document
+    .getElementById("clearButton")
+    .addEventListener("click", function() {
+
+        const confirmed =
+            confirm(
+                "Tem certeza que deseja apagar todas as classificações salvas?"
+            );
+
+        if (!confirmed) {
+            return;
+        }
+
+        state.classifications = {};
+
+        localStorage.removeItem(
+            STORAGE_KEY
+        );
+
+        render();
+
+    });
+
+document
+    .getElementById("nextButton")
+    .addEventListener("click", function() {
+
+        nextPending();
+
+    });
+
+document
+    .getElementById("prevButton")
+    .addEventListener("click", function() {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
 
 document.addEventListener(
     "keydown",
-    event => {
+    function(event) {
+
+        /*
+            Ignora atalhos quando o usuario
+            esta digitando em um campo.
+        */
 
         const tag =
-            event.target.tagName;
+            event.target.tagName.toLowerCase();
 
         if (
-            tag === "INPUT" ||
-            tag === "TEXTAREA" ||
-            tag === "SELECT"
+            tag === "input" ||
+            tag === "textarea"
         ) {
-
             return;
-
         }
 
-        if (
-            event.key === "ArrowRight"
-        ) {
+        const firstVisible =
+            filteredData()[0];
 
-            nextItem();
-
+        if (!firstVisible) {
+            return;
         }
 
-        if (
-            event.key === "ArrowLeft"
-        ) {
+        switch (event.key.toLowerCase()) {
 
-            previousItem();
+            case "1":
+                setClassification(
+                    firstVisible.index,
+                    "FALA"
+                );
+                break;
 
-        }
+            case "2":
+                setClassification(
+                    firstVisible.index,
+                    "GRITO"
+                );
+                break;
 
-        const types = {
+            case "3":
+                setClassification(
+                    firstVisible.index,
+                    "VOCALIZAÇÃO"
+                );
+                break;
 
-            "1": "FALA",
-            "2": "GRITO",
-            "3": "VOCALIZACAO",
-            "4": "EFEITO",
-            "5": "DESCARTAR"
+            case "4":
+                setClassification(
+                    firstVisible.index,
+                    "EFEITO"
+                );
+                break;
 
-        };
-
-        if (
-            types[event.key] &&
-            visibleRows.length
-        ) {
-
-            classify(
-                visibleRows[
-                    currentPosition
-                ].index,
-                types[event.key]
-            );
+            case "5":
+                setClassification(
+                    firstVisible.index,
+                    "DESCARTAR"
+                );
+                break;
 
         }
 
     }
+);
+
+/*
+    Inicializacao
+*/
+
+console.log(
+    "THIEF CLASSIFICATION CATALOG"
+);
+
+console.log(
+    "DATA quantidade:",
+    DATA.length
+);
+
+console.log(
+    "Primeiro registro:",
+    DATA[0]
+);
+
+console.log(
+    "Primeiro audio:",
+    DATA[0] ? DATA[0].audio : null
 );
 
 render();
@@ -1730,68 +1381,152 @@ render();
 </script>
 
 </body>
-
 </html>
 "@
 
-Set-Content `
-    -Path $OutputHtml `
-    -Value $Html `
+# ============================================================
+# SALVAR HTML
+# ============================================================
+
+$Html | Set-Content `
+    -LiteralPath $OutputHtml `
     -Encoding UTF8
 
-# ============================================================
-# VALIDACAO DO PRIMEIRO WAV
-# ============================================================
-
+Write-Host "HTML salvo:" -ForegroundColor Green
+Write-Host $OutputHtml
 Write-Host ""
-Write-Host "============================================================" -ForegroundColor Green
-Write-Host " CATALOGO RECONSTRUIDO"
-Write-Host "============================================================" -ForegroundColor Green
 
-Write-Host ""
-Write-Host ("Total:       {0}" -f $Total)
-Write-Host ("Com audio:   {0}" -f $AudioCount)
-Write-Host ("Com EventID: {0}" -f $EventCount)
-Write-Host ("Com Action:  {0}" -f $ActionCount)
-Write-Host ("Com Sound:   {0}" -f $SoundCount)
-Write-Host ("Com Source:  {0}" -f $SourceCount)
+# ============================================================
+# VALIDACAO DO HTML GERADO
+# ============================================================
 
-if ($Total -gt 0) {
+Write-Host "[8/8] Validando HTML..." -ForegroundColor Yellow
 
-    Write-Host ""
-    Write-Host "Primeiro audio:" -ForegroundColor Yellow
-    Write-Host $Data[0].audio
+$GeneratedHtml = Get-Content `
+    -LiteralPath $OutputHtml `
+    -Raw
 
-    $FirstRelative =
-        $Data[0].audio -replace '/','\'
+$Checks = @(
+    @{
+        Name = "DATA existe"
+        Pattern = "const DATA ="
+    },
+    @{
+        Name = "Batch_001"
+        Pattern = "Batch_001"
+    },
+    @{
+        Name = "Primeiro WAV"
+        Pattern = "0001_731766908\.wav"
+    },
+    @{
+        Name = "audio.src"
+        Pattern = "audio\.src"
+    },
+    @{
+        Name = "createCard"
+        Pattern = "function createCard"
+    },
+    @{
+        Name = "FALA"
+        Pattern = "FALA"
+    },
+    @{
+        Name = "GRITO"
+        Pattern = "GRITO"
+    },
+    @{
+        Name = "localStorage"
+        Pattern = "localStorage"
+    }
+)
 
-    $FirstPhysical =
-        Join-Path `
-            $OutputDir `
-            $FirstRelative
+foreach ($Check in $Checks) {
 
-    Write-Host ""
-    Write-Host "Primeiro arquivo fisico:" -ForegroundColor Yellow
-    Write-Host $FirstPhysical
+    if ($GeneratedHtml -match $Check.Pattern) {
 
-    if (Test-Path $FirstPhysical) {
-
-        Write-Host "ARQUIVO EXISTE: SIM" -ForegroundColor Green
+        Write-Host `
+            ("  {0}: OK" -f $Check.Name) `
+            -ForegroundColor Green
 
     }
     else {
 
-        Write-Host "ARQUIVO EXISTE: NAO" -ForegroundColor Red
+        Write-Host `
+            ("  {0}: FALHOU" -f $Check.Name) `
+            -ForegroundColor Red
 
     }
 
 }
 
 Write-Host ""
-Write-Host "HTML:"
-Write-Host $OutputHtml
+
+# ============================================================
+# EXTRACAO DO PRIMEIRO AUDIO DO HTML
+# ============================================================
+
+$FirstAudioMatch = [regex]::Match(
+    $GeneratedHtml,
+    '0001_731766908\.wav'
+)
+
+if ($FirstAudioMatch.Success) {
+
+    Write-Host `
+        "Primeiro WAV encontrado no HTML: SIM" `
+        -ForegroundColor Green
+
+}
+else {
+
+    Write-Host `
+        "Primeiro WAV encontrado no HTML: NAO" `
+        -ForegroundColor Red
+
+}
+
+# ============================================================
+# ABRIR
+# ============================================================
 
 Write-Host ""
-Write-Host "Abrindo catalogo..."
+Write-Host "===============================================" -ForegroundColor Green
+Write-Host " CATALOG0 GERADO COM SUCESSO"
+Write-Host "===============================================" -ForegroundColor Green
+Write-Host ""
 
-Start-Process $OutputHtml
+Write-Host "HTML:"
+Write-Host $OutputHtml
+Write-Host ""
+
+Write-Host "Total:"
+Write-Host $Data.Count
+Write-Host ""
+
+Write-Host "Primeiro audio:"
+Write-Host $First.audio
+Write-Host ""
+
+Write-Host "Primeiro arquivo fisico:"
+Write-Host $FirstPhysical
+Write-Host ""
+
+if (Test-Path -LiteralPath $FirstPhysical) {
+
+    Write-Host "ARQUIVO EXISTE: SIM" -ForegroundColor Green
+
+}
+else {
+
+    Write-Host "ARQUIVO EXISTE: NAO" -ForegroundColor Red
+
+}
+
+Write-Host ""
+
+Start-Process `
+    -FilePath $OutputHtml
+
+Write-Host "Catalogo aberto no navegador." -ForegroundColor Cyan
+Write-Host ""

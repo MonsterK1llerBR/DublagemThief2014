@@ -1,0 +1,32 @@
+﻿
+THIEF 2014 - CATALOGO DE REVISAO DA DUBLAGEM
+==============================================
+
+Data:
+2026-09-26 00:54:58
+
+CSV de origem:
+.\Analysis\WEM\dubbing_transcription.csv
+
+HTML:
+B:\Thief2014_Dubbing\Work\VoiceAudition\DubbingReview\dubbing_review.html
+
+Total de FALAS:
+203
+
+Com transcricao:
+203
+
+Audios encontrados:
+203
+
+Audios ausentes:
+0
+
+Storage:
+thief2014_dubbing_review_v1
+
+Etapa:
+Revisao das transcricoes e adaptacao PT-BR.
+
+==============================================

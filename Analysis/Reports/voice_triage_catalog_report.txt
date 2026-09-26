@@ -1,0 +1,46 @@
+﻿THIEF 2014 - VOICE TRIAGE CATALOG
+=================================
+
+Script:
+17_Create_Voice_Triage_Catalog.ps1
+
+Data:
+2026-09-25 23:04:46
+
+Registros:
+1144
+
+WAV existentes:
+1144
+
+WAV ausentes:
+0
+
+HTML:
+B:\Thief2014_Dubbing\Work\VoiceAudition\triage.html
+
+Storage key:
+thief2014_voice_triage_v1
+
+Atalhos:
+1 = FALA
+2 = GRITO
+3 = VOCALIZAÇÃO
+4 = EFEITO
+5 = DESCARTAR
+P = PENDENTE
+Espaço = reproduzir/pausar
+Seta esquerda = anterior
+Seta direita = próximo
+
+Fonte principal da ordem:
+voice_review_template.csv
+
+HIRC:
+Somente enriquecimento de metadata.
+
+Inventario tecnico:
+Somente enriquecimento de metadata.
+
+Nenhum WEM original foi modificado.
+Nenhum arquivo da instalação Steam foi modificado.

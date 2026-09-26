@@ -1,10 +1,16 @@
-﻿THIEF 2014 - DUBBING TRANSCRIPTION
-SCRIPT 19
+﻿
+============================================================
+THIEF 2014 - RELATORIO DE TRANSCRICAO
+============================================================
 
-Data: 2026-09-26 00:20:33
+Data inicio:
+09/26/2026 00:42:27
 
-Entrada:
-B:\DublagemThief2014\Analysis\WEM\dubbing_workset.csv
+Data fim:
+09/26/2026 00:44:54
+
+Tempo total:
+00:02:26
 
 Modelo:
 small.en
@@ -12,22 +18,34 @@ small.en
 Device:
 cpu
 
-Compute:
+ComputeType:
 int8
 
-Limite:
-10
+CSV entrada:
+B:\DublagemThief2014\Analysis\WEM\dubbing_workset.csv
 
-RESULTADO
-----------------------------------------
-Registros:       10
-Transcritas:     10
-Sem fala:        0
-Erros:           0
-
-CSV:
+CSV saida:
 B:\DublagemThief2014\Analysis\WEM\dubbing_transcription.csv
 
-PTBR permanece vazio nesta etapa.
+============================================================
+RESULTADOS
+============================================================
 
-Nenhum WEM, BNK ou PCK foi alterado.
+Total FALAS:
+0
+
+Processadas:
+0
+
+Transcricoes OK:
+0
+
+Sem fala:
+0
+
+Erros:
+0
+
+============================================================
+FIM
+============================================================
